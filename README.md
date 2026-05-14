@@ -181,22 +181,3 @@ Hay prompts probados en `WORKFLOW.md` § 6 que reproducen el estilo de investiga
 | **AAIP** | Dictamen datos personales | https://www.argentina.gob.ar/aaip |
 | **CUCAI Entre Ríos** | Piloto provincial | cucai@entrerios.gov.ar (verificar) |
 
----
-
-## Licencia y uso del material
-
-Este es material de investigación interna del equipo. Las fuentes citadas son públicas y se referencian con URL. Los análisis son originales y propiedad intelectual del equipo UAP / Casa Justina (a definir formalmente con sponsor).
-
-> Si compartís esto fuera del equipo, mencioná el origen y verificá con Casa Justina antes de distribuirlo masivamente.
-
----
-
-## Próximo paso recomendado
-
-Antes de profundizar en más soluciones técnicas:
-
-1. **Reunión con Casa Justina** — validar si el ángulo RENAPER + identificación NN les resuena, o si prefieren foco en otra dimensión (Glasgow auto-detect, capacitación, etc.).
-2. **Entrevista con 1-2 coordinadores hospitalarios** — confirmar el pain point real del día a día.
-3. **Decidir si el MVP es vertical** (RENAPER profundo) **o integrado** (3-4 componentes coordinados).
-
-Una vez decidido eso, retomar `WORKFLOW.md` con el ángulo elegido.
