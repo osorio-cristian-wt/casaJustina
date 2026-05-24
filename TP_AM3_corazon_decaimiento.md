@@ -26,26 +26,40 @@ Este TP construye el **modelo matemático base** (EDO de primer orden) para esa 
 
 ### 1.1 Fenómeno seleccionado
 
-**Decaimiento de la viabilidad de un corazón donado durante el transporte ex vivo**, en función del tiempo transcurrido desde el clampeo aórtico (extracción) y la temperatura de preservación.
+**Decaimiento de la viabilidad de un órgano (caso: corazón) desde el momento de la muerte del donante hasta el implante en el receptor**, en función del tiempo y de la temperatura a la que el órgano está expuesto en cada fase del proceso.
+
+El reloj **no empieza con la extracción**: empieza con la parada circulatoria (por ejemplo, en un accidente de tránsito o en una muerte encefálica seguida de paro). Desde ese instante, el órgano está sin perfusión efectiva y el daño se acumula. La temperatura cambia varias veces durante el proceso (cuerpo todavía tibio → enfriamiento in situ → cardioplegia a 4 °C → transporte → implante), y **cada fase con su temperatura aporta su propio daño** al total.
 
 ### 1.2 Descripción física/biológica
 
-Desde el momento en que el corazón se extrae del donante y se interrumpe el flujo sanguíneo (clampeo aórtico), las células miocárdicas dejan de recibir oxígeno y sustratos. Sin perfusión:
+Al cesar la perfusión en el cuerpo del donante, las células miocárdicas dejan de recibir oxígeno y sustratos. Independientemente de la temperatura:
 
 1. La fosforilación oxidativa se detiene → **caída del ATP**.
 2. Las bombas Na⁺/K⁺-ATPasa fallan → **edema celular** y desequilibrio iónico.
 3. Se acumula lactato, baja el pH (de 7.4 a ~6.0).
 4. Al reperfundir en el receptor, se desencadena **daño por isquemia-reperfusión** (radicales libres, sobrecarga de Ca²⁺, apertura del MPTP mitocondrial).
 
-La **temperatura controla la velocidad de todos estos procesos**: enfriar a 4 °C reduce el metabolismo basal a ~3–5 % del valor a 37 °C (ley de Van’t Hoff / Q₁₀ ≈ 2–3 en tejidos biológicos). De ahí que la preservación estándar sea **cold static storage** con soluciones cardiopléjicas (Custodiol/HTK, Celsior, UW) a 4 °C.
+La **temperatura controla la velocidad de todos estos procesos**: enfriar a 4 °C reduce el metabolismo basal a ~3–5 % del valor a 37 °C (ley de Van’t Hoff / Q₁₀ ≈ 2–3 en tejidos biológicos). Por eso la preservación estándar es **cold static storage** con soluciones cardiopléjicas (Custodiol/HTK, Celsior, UW) a 4 °C — *no porque el frío detenga el daño, sino porque lo enlentece ~10–20 veces*.
 
-Operacionalmente esto define dos regímenes:
+### 1.3 Las fases del proceso (cronología real, no idealizada)
+
+| Fase | Cuándo | Temperatura típica | Duración típica |
+|---|---|---|---|
+| **0. Pre-muerte** | Antes del paro | 37 °C, perfusión normal | n/a (V=1 inicial) |
+| **1. Isquemia caliente in situ (WIT)** | Desde paro circulatorio hasta primer enfriamiento | 25–37 °C (cuerpo enfriándose) | 5–30 min (variable, crítico) |
+| **2. Enfriamiento + extracción** | Cardioplegia fría in situ + cirugía | 4–15 °C | 10–30 min |
+| **3. Cold storage (CIT)** | Transporte estático en hielo | 4 °C | 1–6 h (lo que se mide hoy) |
+| **4. Re-implante y reperfusión** | Anastomosis + restablecimiento de flujo | sube a 37 °C | 30–60 min |
+
+El TP modela **fases 1 + 2 + 3** (todo lo que ocurre con el órgano sin perfusión efectiva). La fase 4 (reperfusión) tiene dinámica propia (puede *aumentar* el daño por radicales libres) y queda fuera.
+
+Operacionalmente esto define dos regímenes de referencia:
 - **Isquemia caliente (WIT)** a ~37 °C: el corazón tolera ~15–30 min sin cardioplegia.
 - **Isquemia fría (CIT)** a ~4 °C: el corazón tolera 4–6 h estándar; hasta 6–8 h en donantes jóvenes.
 
-Por encima de esos umbrales el riesgo de **disfunción primaria del injerto (PGD)** crece de forma marcadamente no lineal: en metaanálisis recientes, *cada hora adicional de CIT prácticamente duplica el riesgo de PGD severa* (incidencia base ~10.5 %, mortalidad 30 días asociada ~38.6 %).
+Por encima del umbral combinado, el riesgo de **disfunción primaria del injerto (PGD)** crece de forma marcadamente no lineal: en metaanálisis recientes, *cada hora adicional de CIT prácticamente duplica el riesgo de PGD severa* (incidencia base ~10.5 %, mortalidad 30 días asociada ~38.6 %).
 
-### 1.3 Variables del modelo
+### 1.4 Variables del modelo
 
 | Símbolo | Variable | Tipo | Unidad |
 |---|---|---|---|
