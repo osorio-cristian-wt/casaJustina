@@ -1,40 +1,38 @@
-# TP Integrador AM III — Modelo de decaimiento de viabilidad cardíaca
+# TP Integrador AM III - Modelo de decaimiento de viabilidad cardíaca
 
-> Trabajo Práctico Integrador — Unidad N° 1: Ecuaciones Diferenciales Ordinarias
-> Análisis Matemático III — Ingeniería en Sistemas — UAP
-> **Nota:** este archivo es para un proyecto académico distinto al resto del repo. Se apoya en el contexto temático de Casa Justina (logística de trasplantes) pero **no sigue la plantilla del repositorio**.
+> Trabajo Práctico Integrador - Unidad N° 1: Ecuaciones Diferenciales Ordinarias
+> Análisis Matemático III - Ingeniería en Sistemas - UAP
+> **Nota:** este TP se apoya en la investigación en desarrollo del repositorio [casaJustina](https://github.com/osorio-cristian-wt/casaJustina/tree/AnalisisIII) (logística de trasplantes), del que tomamos los datos clínicos y el contexto del problema.
 
 **Nombres de los alumnos:**
-- ⦁
-- ⦁
-- ⦁
-- ⦁
-- ⦁
+- ⦁ Peter Jared
+- ⦁ Rosales Alan
+- ⦁ Osorio Cristian
 
 ---
 
-## 0. Contexto del proyecto (resumen para el lector externo)
+## 0. ¿De qué trata todo esto?
 
-El sistema argentino de trasplantes está limitado por la **ventana de isquemia** de cada órgano. El corazón es el caso más exigente: 4–6 h de cold ischemia time (CIT) máximo aceptado. Esa ventana fija el radio máximo de transporte (Buenos Aires ↔ Mendoza ya está en el límite, ver `sources/05_tiempos_isquemia.md`).
+En el sistema argentino de trasplantes, cada órgano tiene una ventana de tiempo muy acotada para llegar al receptor. El corazón es el más exigente: aguanta apenas **4 a 6 horas** desde la extracción hasta el implante, lo que en la práctica limita el radio de transporte (Buenos Aires ↔ Mendoza ya está en el filo, ver [tiempos de isquemia](https://github.com/osorio-cristian-wt/casaJustina/blob/AnalisisIII/sources/05_tiempos_isquemia.md)).
 
-La logística actual asume una ventana fija (4 h, 6 h) sin modelar **cómo varía la viabilidad efectiva con la temperatura real**. Si se pudiera **computar el decaimiento** en tiempo real (con sensores de temperatura desde el momento del paro circulatorio del donante), se podría:
+Hoy esa ventana se trata como un valor fijo, sin tener en cuenta **cómo varía la viabilidad real según la temperatura del contenedor**. Si pudiéramos calcular el decaimiento en tiempo real (con sensores de temperatura desde el momento mismo del paro del donante), se podría:
 
-- Estimar dinámicamente el **radio de transporte aceptable**.
-- Decidir entre rutas con distinto perfil térmico/temporal.
-- Alertar tempranamente cuando un operativo va a superar el umbral de viabilidad.
-- Justificar técnicamente extender o acortar el horizonte respecto del “4–6 h” genérico.
+- Estimar dinámicamente cuánto margen de transporte queda.
+- Comparar rutas con distinto perfil de temperatura y tiempo.
+- Avisar antes de que un operativo se pase del umbral de viabilidad.
+- Justificar con números si extender o acortar el “4–6 h” genérico.
 
-Este TP construye el **modelo matemático base** (EDO de primer orden) para esa funcionalidad.
+Lo que sigue es justamente eso: el **modelo matemático base** (una EDO de primer orden) que da pie a esa funcionalidad.
 
 ---
 
-# Punto 1 — Selección y contextualización del problema
+# Punto 1 - Selección y contextualización del problema
 
 ## 1.1 Fenómeno seleccionado
 
-**Decaimiento de la viabilidad de un órgano (caso: corazón) desde el momento del paro circulatorio del donante hasta el implante en el receptor**, en función del tiempo transcurrido y de la temperatura a la que el órgano está expuesto en cada fase del proceso.
+Modelamos el **decaimiento de la viabilidad de un órgano (caso: corazón) desde el momento del paro circulatorio del donante hasta el implante en el receptor**, en función del tiempo transcurrido y de la temperatura a la que el órgano está expuesto en cada fase.
 
-El reloj **no empieza con la extracción**: empieza con la parada circulatoria (por ejemplo, en un accidente de tránsito, o en una muerte encefálica seguida de paro). Desde ese instante, el órgano está sin perfusión efectiva y el daño se acumula. La temperatura cambia varias veces durante el proceso (cuerpo todavía tibio → enfriamiento in situ → cardioplegia a 4 °C → transporte → implante), y **cada fase con su temperatura aporta su propio daño** al total.
+Un detalle importante: el reloj **no arranca con la extracción**, sino con el paro circulatorio (por ejemplo, en un accidente de tránsito, o en una muerte encefálica seguida de paro). Desde ese instante el órgano queda sin perfusión efectiva y el daño empieza a acumularse. La temperatura va cambiando a lo largo del proceso (cuerpo todavía tibio → enfriamiento in situ → cardioplegia a 4 °C → transporte → implante), y **cada fase con su temperatura aporta su propio daño** al total.
 
 ## 1.2 Descripción física/biológica
 
@@ -45,7 +43,7 @@ Al cesar la perfusión en el cuerpo del donante, las células miocárdicas dejan
 3. Se acumula lactato, baja el pH (de 7.4 a ~6.0).
 4. Al reperfundir en el receptor, se desencadena **daño por isquemia-reperfusión** (radicales libres, sobrecarga de Ca²⁺, apertura del MPTP mitocondrial).
 
-La **temperatura controla la velocidad de todos estos procesos**: enfriar a 4 °C reduce el metabolismo basal a ~3–5 % del valor a 37 °C (ley de Van’t Hoff / Q₁₀ ≈ 2–3 en tejidos biológicos). Por eso la preservación estándar es **cold static storage** con soluciones cardiopléjicas (Custodiol/HTK, Celsior, UW) a 4 °C — *no porque el frío detenga el daño, sino porque lo enlentece ~10–20 veces*.
+La **temperatura controla la velocidad de todos estos procesos**: enfriar a 4 °C reduce el metabolismo basal a ~3–5 % del valor a 37 °C (ley de Van’t Hoff / Q₁₀ ≈ 2–3 en tejidos biológicos). Por eso la preservación estándar es **cold static storage** con soluciones cardiopléjicas (Custodiol/HTK, Celsior, UW) a 4 °C. La idea no es que el frío *detenga* el daño, sino que lo enlentece unas 10 a 20 veces.
 
 ## 1.3 Fases del proceso (cronología real)
 
@@ -59,9 +57,9 @@ La **temperatura controla la velocidad de todos estos procesos**: enfriar a 4 °
 
 El TP modela **fases 1 + 2 + 3** (todo lo que ocurre con el órgano sin perfusión efectiva). La fase 4 (reperfusión) tiene dinámica propia y queda fuera.
 
-## 1.4 Simplificaciones del modelo (variables ignoradas)
+## 1.4 Simplificaciones del modelo (variables que dejamos afuera)
 
-El fenómeno real depende de **muchas más variables** que las que vamos a modelar. Las listamos para ser transparentes sobre el alcance del TP:
+El fenómeno real depende de **muchas más variables** que las que vamos a usar. Las listamos para ser transparentes con el alcance del TP:
 
 | Variable real | Por qué influye | Cómo la tratamos en el TP |
 |---|---|---|
@@ -74,7 +72,7 @@ El fenómeno real depende de **muchas más variables** que las que vamos a model
 | Reperfusión (radicales libres, Ca²⁺) | Puede *aumentar* el daño al implantar | Modelo termina antes del implante |
 | Heterogeneidad celular | Endotelio, miocitos, conducción tienen cinéticas distintas | Una sola variable agregada V |
 
-**Decisión metodológica:** para que el modelo sea **una EDO de primer orden tratable analíticamente** (requisito del TP), trabajamos con sólo **tres variables: tiempo (t), temperatura (T) y viabilidad (V)**. Todo lo demás se promedia o se absorbe en los parámetros calibrados (k_ref, Q₁₀). Esto es coherente con el espíritu del enunciado: capturar la **dinámica esencial** del fenómeno, no reproducir toda su complejidad bioquímica.
+**Decisión metodológica:** para que el modelo sea **una EDO de primer orden tratable analíticamente** (que es lo que pide el TP), nos quedamos con sólo **tres variables: tiempo (t), temperatura (T) y viabilidad (V)**. Todo lo demás se promedia o se absorbe en los parámetros calibrados (k_ref, Q₁₀). La idea es capturar la **dinámica esencial** del fenómeno, no reproducir toda su complejidad bioquímica.
 
 ## 1.5 Variables del modelo
 
@@ -91,17 +89,17 @@ El fenómeno real depende de **muchas más variables** que las que vamos a model
 
 **Interpretación de V(t):** métrica agregada normalizada (V=1 al paro, V=0 = inviable). En la práctica clínica se aproxima combinando ATP residual, integridad de membrana (LDH), edema, función contráctil post-reperfusión. Para el modelo teórico la tratamos como una sola variable de estado.
 
-## 1.6 Por qué es interesante computarizar este modelo
+## 1.6 Por qué tiene sentido computarizar este modelo
 
-La clave operacional es la **propiedad de encadenamiento**: el daño acumulado durante una fase con su temperatura propia se *arrastra* a la siguiente fase. La viabilidad al final de una fase es la **condición inicial** de la fase siguiente.
+La clave operacional es lo que llamamos **encadenamiento**: el daño acumulado durante una fase se *arrastra* a la siguiente, porque la viabilidad al final de una fase es la condición inicial de la siguiente.
 
-> *Ejemplo: una persona fallece en un accidente y el órgano queda a ~25 °C durante 15 min hasta que el equipo médico llega y aplica cardioplegia fría. ¿Cuánto tiempo de transporte a 4 °C le queda al corazón antes de cruzar el umbral de viabilidad?*
+> *Ejemplo: una persona fallece en un accidente y el órgano queda a ~25 °C durante 15 min hasta que el equipo médico llega y aplica cardioplegia. ¿Cuánto tiempo de transporte a 4 °C le queda al corazón antes de cruzar el umbral de viabilidad?*
 
-El modelo permite responder esa pregunta de forma exacta (ver Apéndice A). Aplicaciones derivadas: routing dinámico, re-asignación de receptor, alertas tempranas, métrica de “tiempo equivalente” para comparar perfiles térmicos heterogéneos.
+El modelo permite responder esa pregunta de forma exacta (ver Apéndice A). Posibles usos prácticos: ruteo dinámico, reasignación del receptor, alertas tempranas, y una métrica de “tiempo equivalente” para comparar perfiles térmicos distintos en una sola escala.
 
 ---
 
-# Punto 2 — Modelización matemática
+# Punto 2 - Modelización matemática
 
 ## 2.1 Hipótesis del modelo
 
@@ -131,9 +129,9 @@ con condición inicial **V(0) = V₀ = 1** (órgano íntegro al momento del paro
 | Término | Signo | Justificación física |
 |---|---|---|
 | **−k(T)·V** | resta | Degradación metabólica (ATP↓, edema, acidosis). Proporcional a V porque cuanto más sustrato viable queda, más hay para degradarse. La temperatura modula la velocidad vía k(T). |
-| (no hay término +) | — | En isquemia estática no existe reparación. Se elimina del modelo base. |
+| (no hay término +) | - | En isquemia estática no existe reparación. Se elimina del modelo base. |
 
-## 2.3 Modelo de k(T) — ley de Van’t Hoff / Q₁₀
+## 2.3 Modelo de k(T) - ley de Van’t Hoff / Q₁₀
 
 $$ k(T) = k_{ref}\cdot Q_{10}^{(T - T_{ref})/10} $$
 
@@ -168,15 +166,15 @@ $$ \frac{k(37)}{k(4)} = Q_{10}^{(37-4)/10} = Q_{10}^{3.3} \;\;\Rightarrow\;\; Q_
 
 ---
 
-# Punto 3 — Resolución analítica de la EDO
+# Punto 3 - Resolución analítica de la EDO
 
 La EDO es de **variables separables**. Aplicamos el método correspondiente.
 
-**Paso 1 — Reordenar separando V y t:**
+**Paso 1 - Reordenar separando V y t:**
 
 $$ \frac{dV}{dt} = -k(T)\cdot V \;\;\Longrightarrow\;\; \frac{dV}{V} = -k(T)\, dt $$
 
-**Paso 2 — Integrar ambos lados:**
+**Paso 2 - Integrar ambos lados:**
 
 $$ \int \frac{dV}{V} = \int -k(T)\, dt $$
 
@@ -184,7 +182,7 @@ $$ \ln|V| = -k(T)\cdot t + C_1 $$
 
 con C₁ constante de integración.
 
-**Paso 3 — Despejar V aplicando la exponencial:**
+**Paso 3 - Despejar V aplicando la exponencial:**
 
 $$ |V| = e^{-k(T)\, t + C_1} = e^{C_1}\cdot e^{-k(T)\,t} $$
 
@@ -204,7 +202,7 @@ Coincide con el resultado por separación de variables. ✓
 
 ---
 
-# Punto 4 — Solución general
+# Punto 4 - Solución general
 
 $$ \boxed{\; V(t) = C\cdot e^{-k(T)\,t} \;} $$
 
@@ -223,7 +221,7 @@ Si se varía también T, se obtiene una **familia bi-paramétrica** donde:
 
 ---
 
-# Punto 5 — Solución particular (Problema de Valor Inicial)
+# Punto 5 - Solución particular (Problema de Valor Inicial)
 
 ## Planteo del PVI
 
@@ -258,7 +256,7 @@ A diferentes temperaturas de preservación, usando Q₁₀ = 2.2 y k_ref = 1.39 
 
 ---
 
-# Punto 6 — Campo de direcciones y análisis cualitativo
+# Punto 6 - Campo de direcciones y análisis cualitativo
 
 ## Estructura del campo
 
@@ -281,13 +279,13 @@ Existe un **único punto de equilibrio: V* = 0**, que aparece como **asíntota h
 
 ## Significado físico del equilibrio
 
-**V = 0 representa el órgano completamente inviable.** Es un equilibrio estable: una vez extraído, sin perfusión, **el destino inevitable es la inviabilidad total**. La temperatura sólo controla *cuán rápido* se llega ahí — no existe ninguna T (por baja que sea) que produzca un equilibrio “de preservación indefinida” en cold static storage estática.
+**V = 0 representa el órgano completamente inviable.** Es un equilibrio estable: una vez extraído y sin perfusión, el destino inevitable es la inviabilidad total. La temperatura sólo controla **qué tan rápido** se llega ahí; ninguna T (por baja que sea) genera un equilibrio “de preservación indefinida” mientras el órgano esté en cold static storage.
 
-Esto coincide con la realidad clínica: incluso en hielo seco profundo el corazón no se conserva más de ~8–10 h. Para extender la viabilidad en serio (>12 h) hay que cambiar la **estructura** del modelo, no sólo el parámetro T: hace falta perfusión normotérmica (TransMedics OCS), que introduciría un término +λ(V_max − V) de “sostén metabólico” y crearía un equilibrio nuevo en V* > 0.
+Esto coincide con la realidad clínica: incluso con hielo seco profundo, el corazón no se conserva más de ~8–10 h. Para extender la viabilidad en serio (>12 h) hay que cambiar la **estructura** del modelo, no sólo el parámetro T: haría falta perfusión normotérmica (tipo TransMedics OCS), que sumaría un término +λ(V_max − V) de “sostén metabólico” y crearía un equilibrio nuevo con V* > 0.
 
 ---
 
-# Punto 7 — Simulación numérica con Método de Euler
+# Punto 7 - Simulación numérica con Método de Euler
 
 ## 7.1 Algoritmo de Euler implementado desde cero
 
@@ -326,7 +324,7 @@ def euler(V0, T, t_end, dt):
     return ts, Vs
 
 # --- Configuración del caso a graficar ---
-T_caso = 4.0        # °C — cold storage estándar
+T_caso = 4.0        # °C - cold storage estándar
 t_end  = 10.0       # horas
 dt     = 0.5        # paso "grande" para mostrar error de Euler visualmente
 
@@ -379,67 +377,61 @@ for t_i, ve, vx, ea, er in zip(ts_e, Vs_e, Vs_exacta_en_ts_e,
 
 ## 7.3 Análisis de la gráfica y precisión del método
 
-**Lo que muestra la gráfica:**
+**Lo que se ve en la gráfica:**
 
-- El **campo de direcciones** (flechas grises) confirma visualmente lo del Punto 6: pendientes constantes a lo largo de cada línea horizontal, todas apuntando hacia abajo, y se aplanan al acercarse a V = 0 (la asíntota).
-- La **curva exacta azul** sigue suavemente la dirección que dicta el campo en cada punto — exactamente lo que se espera de una solución.
-- Los **puntos rojos de Euler** caen *encima* de la curva exacta al inicio, pero se van **separando hacia abajo** a medida que avanza el tiempo. Esto pasa porque Euler usa la pendiente en el punto actual (más empinada) para extrapolar un paso hacia adelante, sobreestimando la caída de V.
+- El **campo de direcciones** (flechas grises) confirma visualmente lo del Punto 6: las pendientes son constantes sobre cada línea horizontal, apuntan todas hacia abajo, y se van aplanando al acercarse a V = 0 (la asíntota).
+- La **curva exacta azul** sigue suavemente la dirección que dicta el campo en cada punto, como es esperable para una solución analítica.
+- Los **puntos rojos de Euler** arrancan pegados a la curva exacta pero se van **separando hacia abajo** con el correr del tiempo. El motivo es que Euler usa la pendiente en el punto actual (la más empinada del intervalo) para extrapolar todo el paso, así que termina cayendo un poquito más rápido que la curva real.
 
 **Precisión del método (con Δt = 0.5 h y T = 4 °C):**
 
 | t (h) | V Euler | V exacta | error relativo |
 |---|---|---|---|
-| 0 | 1.000 | 1.000 | 0 % |
-| 1 | 0.942 | 0.890 | 5.8 % |
-| 2 | 0.887 | 0.793 | 11.9 % |
-| 4 | 0.787 | 0.628 | 25.3 % |
-| 6 | 0.698 | 0.500 | 39.7 % |
-| 10 | 0.547 | 0.314 | 74.4 % |
+| 0 | 1.000 | 1.000 | 0.00 % |
+| 1 | 0.887 | 0.890 | 0.35 % |
+| 2 | 0.787 | 0.793 | 0.68 % |
+| 4 | 0.620 | 0.629 | 1.35 % |
+| 6 | 0.488 | 0.499 | 2.03 % |
+| 10 | 0.303 | 0.314 | 3.41 % |
 
-Con Δt = 0.5 h el error es **inaceptable** para uso clínico ya en 2–3 h. Reduciendo a Δt = 0.05 h (3 min, realista para sensores reales), el error en 6 h baja a ~3 %. Este comportamiento es coherente con la teoría: el método de Euler tiene **error local O(Δt²)** y **error global O(Δt)** — para dividir el error por 10 hay que dividir el paso por 10.
+Para esta EDO, Euler con un paso bastante grueso (Δt = 0.5 h) ya tira un error menor al 3.5 % a 10 horas — más que suficiente para visualizar el fenómeno. Si reducimos a Δt = 0.05 h (3 min, realista para sensores reales) el error a 6 h queda por debajo del 0.3 %. Esto encaja con la teoría: Euler tiene **error local O(Δt²)** y **error global O(Δt)**, así que dividir el paso por 10 divide el error por 10.
 
-**Conclusión sobre Euler:** apto para prototipar y visualizar el fenómeno, pero para una aplicación operacional convendría usar Runge–Kutta de orden 4 o el integrador trapezoidal/RK45 de SciPy. Para este TP, Euler con paso fino (Δt ≤ 0.05 h) es suficientemente preciso y conserva las propiedades cualitativas correctas (monotonía, asíntota, equilibrio).
+**Conclusión sobre Euler:** anda muy bien para prototipar y visualizar este fenómeno, y la propia EDO lineal homogénea es un caso amable (sin rigidez, sin oscilaciones). Para una aplicación clínica real probablemente usaríamos Runge–Kutta de orden 4 o el RK45 de SciPy por defensa en profundidad, pero para los fines del TP, Euler con Δt razonable mantiene todas las propiedades cualitativas correctas (monotonía, asíntota, equilibrio).
 
 ---
 
-# Apéndice A — Encadenamiento de fases (caso operacional real)
+# Apéndice A - Encadenamiento de fases (caso operacional real)
 
-Aplicación directa del modelo cuando T cambia a lo largo del proceso (lo que pasa de verdad: WIT a temperatura ambiente + cardioplegia + transporte frío).
+En la realidad la temperatura no es constante: el órgano pasa por varias fases (cuerpo tibio → cardioplegia → transporte en hielo) y cada una aporta su propio daño. La buena noticia es que el modelo del TP **ya lo soporta sin agregar nada nuevo**: alcanza con aplicar la solución particular fase por fase, usando la viabilidad que sale de una fase como condición inicial de la siguiente (hipótesis H6).
 
-## A.1 Fórmula de encadenamiento
+## A.1 Ejemplo trabajado
 
-Si el órgano atraviesa N fases consecutivas con temperaturas (T₁, …, Tₙ) durante tiempos (Δt₁, …, Δtₙ), aplicando la solución particular fase por fase y la hipótesis H6:
+> Una persona fallece en un accidente y el órgano queda a ~25 °C durante **15 min** hasta que llega el equipo médico y aplica cardioplegia. Después se transporta a 4 °C. **¿Cuánto tiempo de transporte queda hasta que la viabilidad cruce V_min = 0.5?**
 
-$$ V_{final} = V_0 \cdot \prod_{i=1}^{N} e^{-k(T_i)\,\Delta t_i} = V_0 \cdot \exp\!\left(-\sum_{i=1}^{N} k(T_i)\,\Delta t_i\right) $$
-
-## A.2 Ejemplo trabajado
-
-> Persona fallece en accidente a 25 °C ambiente. Pasan **15 min** hasta cardioplegia. Después se transporta a 4 °C. **¿Cuánto tiempo de transporte queda hasta cruzar V_min = 0.5?**
-
-**Paso 1 — k de cada fase:**
+**Paso 1 - k de cada fase** (con la fórmula de Van't Hoff del Punto 2.3):
 - Fase 1 (WIT a 25 °C): k(25) = 1.39 · 2.2^((25−37)/10) ≈ **0.549 h⁻¹**
 - Fase 2 (CIT a 4 °C): k(4) ≈ **0.116 h⁻¹**
 
-**Paso 2 — V al terminar la fase 1** (15 min = 0.25 h):
+**Paso 2 - V al terminar la fase 1** (15 min = 0.25 h):
 $$ V_1 = 1 \cdot e^{-0.549 \cdot 0.25} = e^{-0.137} \approx 0.872 $$
 
-**Paso 3 — Tiempo restante en fase 2:**
+El órgano ya perdió ~13 % de viabilidad antes de entrar en frío.
+
+**Paso 3 - Tiempo restante en fase 2** (arrancando ahora de V = 0.872):
 $$ 0.5 = 0.872 \cdot e^{-0.116\,t_2} \;\Rightarrow\; t_2 = \frac{\ln(0.872/0.5)}{0.116} \approx \mathbf{4.79\ h} $$
 
-**Comparación:**
-- Sin WIT: tiempo útil a 4 °C = ln(2)/0.116 ≈ **5.97 h**
-- Con 15 min de WIT a 25 °C: tiempo útil restante ≈ **4.79 h**
-- **Costo de 15 min calientes ≈ 1.18 h de transporte perdido**.
+**Comparación con el escenario ideal:**
+- Sin WIT (cardioplegia inmediata): tiempo útil a 4 °C = ln(2)/0.116 ≈ **5.97 h**.
+- Con 15 min de WIT a 25 °C: tiempo útil restante ≈ **4.79 h**.
+- **Costo real de esos 15 min calientes: ~1.18 h menos de transporte disponible.**
 
-## A.3 Tiempo equivalente
+Es decir, un retraso aparentemente menor (un cuarto de hora) consume cerca del 20 % del presupuesto total de tiempo. Eso es exactamente lo que justifica computarizar el modelo: una decisión logística que mire sólo "tengo 6 horas desde el frío" se equivoca por hora y pico.
 
-Definimos una métrica unificada referida a una temperatura de referencia T*:
+## A.2 Tiempo equivalente (métrica unificada)
 
-$$ t_{eq}(T^*) = \sum_{i=1}^{N} \frac{k(T_i)}{k(T^*)}\cdot \Delta t_i $$
+Como cada fase aporta un término al exponente, se puede expresar todo el daño como un **tiempo equivalente a una temperatura de referencia**. En el ejemplo, los 15 min a 25 °C equivalen a ~1.18 h de cold storage a 4 °C. Esto permite comparar logísticas heterogéneas (WIT corto + transporte largo vs. WIT largo + transporte corto) en una sola escala.
 
-Los 15 min a 25 °C equivalen a 1.18 h “de cold storage a 4 °C”. Esto permite comparar logísticas heterogéneas (WIT corto + transporte largo vs. WIT largo + transporte corto) en una sola escala.
-
-## A.4 Script Python multi-fase
+## A.3 Script Python multi-fase
 
 ```python
 fases = [
@@ -470,28 +462,30 @@ print(f"Tiempo útil restante a 4 °C hasta V=0.5: {t_restante:.2f} h")
 
 ---
 
-# Apéndice B — Datos de literatura para la calibración
+# Apéndice B - Datos de literatura para la calibración
 
 ## B.1 Tiempos de isquemia clínicamente aceptados (corazón)
 
 | Régimen | Temperatura | Tiempo tolerable | Fuente |
 |---|---|---|---|
-| Isquemia caliente sin cardioplegia | ~37 °C | 15 min | StatPearls *Myocardial Protection* |
-| Isquemia caliente con cardioplegia a 37 °C | ~37 °C | 45 min | Frontiers in Physiology |
-| **Cold static storage estándar** | **4 °C** | **4–6 h** | ISHLT, múltiples revisiones |
-| Cold storage con UW prolongado | 4 °C | 8–10 h en donantes jóvenes | Frontiers Cardiovasc Med 2023 |
-| OCS normotérmico (TransMedics) | 33–37 °C perfundido | 6–12 h clínico (>16 h experimental) | OCS Heart EXPAND |
+| Isquemia caliente sin cardioplegia | ~37 °C | 15 min | [StatPearls — *Myocardial Protection*](https://www.ncbi.nlm.nih.gov/books/NBK567795/) |
+| Isquemia caliente con cardioplegia a 37 °C | ~37 °C | 45 min | [Frontiers in Physiology — *Hypothermia Prevents Cardiac Dysfunction*](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9301761/) |
+| **Cold static storage estándar** | **4 °C** | **4–6 h** | [Frontiers Cardiovasc Med 2023 — *Graft preservation in heart transplantation*](https://www.frontiersin.org/journals/cardiovascular-medicine/articles/10.3389/fcvm.2023.1253579/full) |
+| Cold storage con UW prolongado | 4 °C | 8–10 h en donantes jóvenes | [Frontiers Cardiovasc Med 2023](https://www.frontiersin.org/journals/cardiovascular-medicine/articles/10.3389/fcvm.2023.1253579/full) |
+| OCS normotérmico (TransMedics) | 33–37 °C perfundido | 6–12 h clínico (>16 h experimental) | [Frontiers Cardiovasc Med 2024 — *Extending heart preservation to 24 h*](https://www.frontiersin.org/journals/cardiovascular-medicine/articles/10.3389/fcvm.2024.1325169/full) |
 
 ## B.2 Reducción metabólica con temperatura
 
-- Regla Q₁₀ general: ~50 % menos metabolismo por cada 10 °C de bajada (rango 25–37 °C).
-- A 4 °C: consumo de O₂ miocárdico se reduce ~97 % respecto del basal a 37 °C.
-- Q₁₀ medido para ATPasa miocárdica: ~3.5.
+- Regla Q₁₀ general: ~50 % menos metabolismo por cada 10 °C de bajada (rango 25–37 °C). Ver [Q10 — Wikipedia](https://en.wikipedia.org/wiki/Q10_(temperature_coefficient)).
+- A 4 °C: consumo de O₂ miocárdico se reduce ~97 % respecto del basal a 37 °C. Ver [AHA Journals — *Physiological Impact of Hypothermia*](https://journals.physiology.org/doi/full/10.1152/physiol.00025.2021).
+- Q₁₀ medido para ATPasa miocárdica: ~3.5. Ver [PMC — *Impact of temperature on cross-bridge cycling kinetics in rat myocardium*](https://pmc.ncbi.nlm.nih.gov/articles/PMC2277159/).
 
 ## B.3 Pérdida de ATP durante isquemia normotérmica
 
 - 10 min: pérdida del 61 % del ATP subendocárdico.
 - 40 min: pérdida del 87 % del ATP.
+
+Fuente: [Circulation 2000 — *ATP Synthesis During Low-Flow Ischemia*](https://www.ahajournals.org/doi/10.1161/01.cir.101.17.2090).
 
 ## B.4 PGD vs. CIT
 
@@ -501,11 +495,13 @@ print(f"Tiempo útil restante a 4 °C hasta V=0.5: {t_restante:.2f} h")
 - Categorías UNOS: limitado 0–3.49 h, prolongado 3.50–6.24 h, extendido ≥6.25 h.
 - Donantes <20 años toleran >6 h; donantes >33 años, <3.5 h ideal.
 
-> El escalonamiento del riesgo sugiere que el modelo exponencial puro **subestima** la zona crítica más allá de 5–6 h. Mejora futura: modelo con umbral (logístico/sigmoide) o término de daño acumulado por reperfusión. Fuera del alcance de un TP de primer orden.
+Fuentes: [American Journal of Transplantation 2022 — *Primary graft dysfunction after heart transplantation*](https://www.amjtransplant.org/article/S1600-6135(22)09577-6/fulltext); [PMC — Metaanálisis de factores de riesgo de PGD (2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC13019779/).
+
+> Este escalonamiento del riesgo sugiere que el modelo exponencial puro **subestima** la zona crítica más allá de 5–6 h. Mejora futura: modelo con umbral (logístico/sigmoide) o término extra de daño acumulado por reperfusión. Queda fuera del alcance de un TP de primer orden.
 
 ---
 
-# Apéndice C — Fuentes consultadas
+# Apéndice C - Fuentes consultadas
 
 - **Tiempos de isquemia y preservación**: Medicina Intensiva (España), Donor Alliance, Nefrología al Día, ISHLT guidelines (vía `sources/05_tiempos_isquemia.md` del repo).
 - **Q₁₀ y Van’t Hoff en biología**: Wikipedia *Q10 (temperature coefficient)*; Ecological Modelling 2020 (Mundim et al.); PhysiologyWeb Q10 calculator.
