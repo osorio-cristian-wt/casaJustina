@@ -146,14 +146,14 @@ Asumimos que el “tiempo máximo aceptado” en la práctica clínica equivale 
 
 De ahí se despeja Q₁₀:
 
-$$ \frac{k(37)}{k(4)} = Q_{10}^{(37-4)/10} = Q_{10}^{3.3} \;\;\Rightarrow\;\; Q_{10} \approx (1.39/0.116)^{1/3.3} \approx 2.18 $$
+$$ \frac{k(37)}{k(4)} = Q_{10}^{(37-4)/10} = Q_{10}^{3.3} \;\;\Rightarrow\;\; Q_{10} = (1.39/0.116)^{1/3.3} \approx 2.12 $$
 
-**Q₁₀ ≈ 2.2** es consistente con los tiempos clínicos publicados y cae dentro del rango biológico estándar (2–3).
+**Q₁₀ ≈ 2.12** es consistente con los tiempos clínicos publicados y cae dentro del rango biológico estándar (2–3 para tejidos).
 
 | Parámetro | Valor de trabajo | Fuente |
 |---|---|---|
 | k_ref (a T_ref = 37 °C) | 1.39 h⁻¹ | Calibrado con WIT cardíaca ~30 min |
-| Q₁₀ | 2.2 (rango 2.0–3.0 para análisis de sensibilidad) | Van’t Hoff + ATPasa miocárdica |
+| Q₁₀ | 2.12 (rango 2.0–3.0 para análisis de sensibilidad) | Van’t Hoff + ATPasa miocárdica |
 | T_ref | 37 °C | Temperatura corporal |
 | V₀ | 1 | Órgano íntegro al paro circulatorio |
 | V_min | 0.5 | Umbral clínico práctico |
@@ -241,17 +241,17 @@ $$ \boxed{\; V(t) = e^{-k(T)\,t} \;} $$
 
 ## Evaluación numérica con los parámetros calibrados
 
-A diferentes temperaturas de preservación, usando Q₁₀ = 2.2 y k_ref = 1.39 h⁻¹:
+A diferentes temperaturas de preservación, usando Q₁₀ = 2.12 y k_ref = 1.39 h⁻¹:
 
 | T (°C) | k(T) [h⁻¹] | V(1 h) | V(4 h) | V(6 h) | Tiempo hasta V=0.5 |
 |---|---|---|---|---|---|
-| 4 | 0.116 | 0.890 | 0.628 | 0.500 | **5.97 h** |
-| 8 | 0.156 | 0.855 | 0.535 | 0.391 | **4.45 h** |
-| 15 | 0.252 | 0.777 | 0.366 | 0.222 | **2.75 h** |
-| 25 | 0.549 | 0.578 | 0.111 | 0.037 | **1.26 h** |
+| 4 | 0.116 | 0.890 | 0.628 | 0.497 | **5.95 h** |
+| 8 | 0.157 | 0.854 | 0.533 | 0.389 | **4.41 h** |
+| 15 | 0.266 | 0.766 | 0.345 | 0.203 | **2.60 h** |
+| 25 | 0.564 | 0.569 | 0.105 | 0.034 | **1.23 h** |
 | 37 | 1.390 | 0.249 | 0.004 | < 0.001 | **0.50 h** |
 
-> Lectura: un salto de 4 °C → 8 °C en el contenedor (falla térmica suave) reduce el tiempo útil en ~25 %.
+> Lectura: un salto de 4 °C → 8 °C en el contenedor (falla térmica suave) reduce el tiempo útil en ~26 %.
 > Un salto a 25 °C (falla grave) lo reduce en ~80 %.
 
 ---
@@ -301,12 +301,14 @@ $$ V_{i+1} = V_i + \Delta t\cdot(-k(T)\cdot V_i) = V_i\cdot(1 - k(T)\,\Delta t) 
 
 ```python
 import numpy as np
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
 # --- Parámetros calibrados ---
 k_ref = 1.39      # h^-1, velocidad de degradación a T_ref
 T_ref = 37.0      # °C
-Q10   = 2.2       # Coeficiente de Van't Hoff
+Q10   = 2.12      # Coeficiente de Van't Hoff (calibrado)
 V_min = 0.5       # Umbral clínico de viabilidad
 
 def k(T):
@@ -389,10 +391,10 @@ for t_i, ve, vx, ea, er in zip(ts_e, Vs_e, Vs_exacta_en_ts_e,
 |---|---|---|---|
 | 0 | 1.000 | 1.000 | 0.00 % |
 | 1 | 0.887 | 0.890 | 0.35 % |
-| 2 | 0.787 | 0.793 | 0.68 % |
-| 4 | 0.620 | 0.629 | 1.35 % |
-| 6 | 0.488 | 0.499 | 2.03 % |
-| 10 | 0.303 | 0.314 | 3.41 % |
+| 2 | 0.787 | 0.792 | 0.70 % |
+| 4 | 0.619 | 0.628 | 1.40 % |
+| 6 | 0.487 | 0.497 | 2.09 % |
+| 10 | 0.301 | 0.312 | 3.47 % |
 
 Para esta EDO, Euler con un paso bastante grueso (Δt = 0.5 h) ya tira un error menor al 3.5 % a 10 horas — más que suficiente para visualizar el fenómeno. Si reducimos a Δt = 0.05 h (3 min, realista para sensores reales) el error a 6 h queda por debajo del 0.3 %. Esto encaja con la teoría: Euler tiene **error local O(Δt²)** y **error global O(Δt)**, así que dividir el paso por 10 divide el error por 10.
 
@@ -409,31 +411,44 @@ En la realidad la temperatura no es constante: el órgano pasa por varias fases 
 > Una persona fallece en un accidente y el órgano queda a ~25 °C durante **15 min** hasta que llega el equipo médico y aplica cardioplegia. Después se transporta a 4 °C. **¿Cuánto tiempo de transporte queda hasta que la viabilidad cruce V_min = 0.5?**
 
 **Paso 1 - k de cada fase** (con la fórmula de Van't Hoff del Punto 2.3):
-- Fase 1 (WIT a 25 °C): k(25) = 1.39 · 2.2^((25−37)/10) ≈ **0.549 h⁻¹**
+- Fase 1 (WIT a 25 °C): k(25) = 1.39 · 2.12^((25−37)/10) ≈ **0.564 h⁻¹**
 - Fase 2 (CIT a 4 °C): k(4) ≈ **0.116 h⁻¹**
 
 **Paso 2 - V al terminar la fase 1** (15 min = 0.25 h):
-$$ V_1 = 1 \cdot e^{-0.549 \cdot 0.25} = e^{-0.137} \approx 0.872 $$
+$$ V_1 = 1 \cdot e^{-0.564 \cdot 0.25} = e^{-0.141} \approx 0.868 $$
 
 El órgano ya perdió ~13 % de viabilidad antes de entrar en frío.
 
-**Paso 3 - Tiempo restante en fase 2** (arrancando ahora de V = 0.872):
-$$ 0.5 = 0.872 \cdot e^{-0.116\,t_2} \;\Rightarrow\; t_2 = \frac{\ln(0.872/0.5)}{0.116} \approx \mathbf{4.79\ h} $$
+**Paso 3 - Tiempo restante en fase 2** (arrancando ahora de V = 0.868):
+$$ 0.5 = 0.868 \cdot e^{-0.116\,t_2} \;\Rightarrow\; t_2 = \frac{\ln(0.868/0.5)}{0.116} \approx \mathbf{4.74\ h} $$
 
 **Comparación con el escenario ideal:**
-- Sin WIT (cardioplegia inmediata): tiempo útil a 4 °C = ln(2)/0.116 ≈ **5.97 h**.
-- Con 15 min de WIT a 25 °C: tiempo útil restante ≈ **4.79 h**.
-- **Costo real de esos 15 min calientes: ~1.18 h menos de transporte disponible.**
+- Sin WIT (cardioplegia inmediata): tiempo útil a 4 °C = ln(2)/0.116 ≈ **5.95 h**.
+- Con 15 min de WIT a 25 °C: tiempo útil restante ≈ **4.74 h**.
+- **Costo real de esos 15 min calientes: ~1.21 h menos de transporte disponible.**
 
 Es decir, un retraso aparentemente menor (un cuarto de hora) consume cerca del 20 % del presupuesto total de tiempo. Eso es exactamente lo que justifica computarizar el modelo: una decisión logística que mire sólo "tengo 6 horas desde el frío" se equivoca por hora y pico.
 
 ## A.2 Tiempo equivalente (métrica unificada)
 
-Como cada fase aporta un término al exponente, se puede expresar todo el daño como un **tiempo equivalente a una temperatura de referencia**. En el ejemplo, los 15 min a 25 °C equivalen a ~1.18 h de cold storage a 4 °C. Esto permite comparar logísticas heterogéneas (WIT corto + transporte largo vs. WIT largo + transporte corto) en una sola escala.
+Como cada fase aporta un término al exponente, se puede expresar todo el daño como un **tiempo equivalente a una temperatura de referencia**. En el ejemplo, los 15 min a 25 °C equivalen a ~1.21 h de cold storage a 4 °C. Esto permite comparar logísticas heterogéneas (WIT corto + transporte largo vs. WIT largo + transporte corto) en una sola escala.
 
 ## A.3 Script Python multi-fase
 
 ```python
+import numpy as np
+import matplotlib
+matplotlib.use('TkAgg')
+import matplotlib.pyplot as plt
+
+# Reutiliza k_ref, T_ref, Q10 y k(T) del script del Punto 7
+k_ref = 1.39
+T_ref = 37.0
+Q10   = 2.12
+
+def k(T):
+    return k_ref * Q10 ** ((T - T_ref) / 10.0)
+
 fases = [
     (25.0, 0.25),   # Fase 1: WIT a 25 °C, 15 min
     ( 4.0, 6.00),   # Fase 2: cold storage a 4 °C, 6 h
@@ -503,10 +518,30 @@ Fuentes: [American Journal of Transplantation 2022 — *Primary graft dysfunctio
 
 # Apéndice C - Fuentes consultadas
 
-- **Tiempos de isquemia y preservación**: Medicina Intensiva (España), Donor Alliance, Nefrología al Día, ISHLT guidelines (vía `sources/05_tiempos_isquemia.md` del repo).
-- **Q₁₀ y Van’t Hoff en biología**: Wikipedia *Q10 (temperature coefficient)*; Ecological Modelling 2020 (Mundim et al.); PhysiologyWeb Q10 calculator.
-- **Hipotermia y protección miocárdica**: StatPearls *Myocardial Protection*; AHA Journals *Physiological Impact of Hypothermia* (2021); Frontiers in Physiology *Hypothermia Prevents Cardiac Dysfunction*.
-- **Cinética de ATP cardíaco**: Circulation 2000 *ATP Synthesis During Low-Flow Ischemia*; J Mol Cell Cardiol *Impact of temperature on cross-bridge cycling kinetics*.
-- **PGD y CIT**: American Journal of Transplantation 2022 *Primary graft dysfunction after heart transplantation*; metaanálisis 2024 en *Cardiothoracic Transplantation*.
-- **Ecuación de Arrhenius en preservación**: Frontiers Cardiovasc Med 2023 *Graft preservation in heart transplantation*.
-- **OCS / TransMedics**: Frontiers Cardiovasc Med 2024 *Extending heart preservation to 24 h*; PMC *Ex Vivo Heart Perfusion Initial Experience US*.
+**Tiempos de isquemia y preservación**
+- [Casa Justina (repo) — `sources/05_tiempos_isquemia.md`](https://github.com/osorio-cristian-wt/casaJustina/blob/AnalisisIII/sources/05_tiempos_isquemia.md) — síntesis interna con referencias a Medicina Intensiva (España), Donor Alliance, Nefrología al Día e ISHLT guidelines.
+
+**Q₁₀ y ley de Van't Hoff en sistemas biológicos**
+- [Wikipedia — *Q10 (temperature coefficient)*](https://en.wikipedia.org/wiki/Q10_(temperature_coefficient))
+- [Mundim et al. (2020) — *Temperature coefficient (Q10) and its applications in biological systems: Beyond the Arrhenius theory*, Ecological Modelling](https://www.sciencedirect.com/science/article/abs/pii/S030438002030199X)
+- [PhysiologyWeb — *Q10 calculator*](https://www.physiologyweb.com/calculators/q10_calculator.html)
+
+**Hipotermia y protección miocárdica**
+- [StatPearls — *Myocardial Protection*](https://www.ncbi.nlm.nih.gov/books/NBK567795/)
+- [AHA Journals (2021) — *Physiological Impact of Hypothermia: The Good, the Bad, and the Ugly*](https://journals.physiology.org/doi/full/10.1152/physiol.00025.2021)
+- [PMC — *Hypothermia Prevents Cardiac Dysfunction during Acute Ischemia Reperfusion*](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9301761/)
+
+**Cinética de ATP cardíaco**
+- [Circulation (2000) — *ATP Synthesis During Low-Flow Ischemia*](https://www.ahajournals.org/doi/10.1161/01.cir.101.17.2090)
+- [PMC — *Impact of temperature on cross-bridge cycling kinetics in rat myocardium*](https://pmc.ncbi.nlm.nih.gov/articles/PMC2277159/)
+
+**PGD y CIT (datos clínicos)**
+- [American Journal of Transplantation (2022) — *Primary graft dysfunction after heart transplantation: Incidence, trends, and associated risk factors*](https://www.amjtransplant.org/article/S1600-6135(22)09577-6/fulltext)
+- [PMC — *Risk factors for primary graft dysfunction after heart transplantation: systematic review and meta-analysis (2024)*](https://pmc.ncbi.nlm.nih.gov/articles/PMC13019779/)
+
+**Ecuación de Arrhenius en preservación de órganos**
+- [Frontiers Cardiovasc Med (2023) — *Graft preservation in heart transplantation: current approaches*](https://www.frontiersin.org/journals/cardiovascular-medicine/articles/10.3389/fcvm.2023.1253579/full)
+
+**OCS / TransMedics (perfusión normotérmica ex vivo)**
+- [Frontiers Cardiovasc Med (2024) — *Extending heart preservation to 24 h with normothermic perfusion*](https://www.frontiersin.org/journals/cardiovascular-medicine/articles/10.3389/fcvm.2024.1325169/full)
+- [PMC — *Ex Vivo Heart Perfusion for Cardiac Transplantation: An Initial Experience in the United States*](https://pmc.ncbi.nlm.nih.gov/articles/PMC9949869/)
