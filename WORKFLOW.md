@@ -2,6 +2,8 @@
 
 > Esta es la **metodología replicable** que usamos para producir el contenido actual de este repo.
 > Si vas a continuar la investigación (vos o un compañero del equipo, o usando Claude/otro LLM), seguí este flujo.
+>
+> **Cómo se ejecuta hoy:** este repo se mantiene con **Claude Code** (CLI/IDE). La metodología de abajo es agnóstica de herramienta, pero la sección **§1.bis** mapea cada fase a las herramientas concretas de Claude Code (TodoWrite, WebSearch/WebFetch en paralelo, Read/Write/Edit/Grep/Glob, subagentes y memoria). Si trabajás con otro LLM o a mano, ignorá §1.bis y usá las plantillas + prompts de §6.
 
 ---
 
@@ -52,6 +54,31 @@
 ```
 
 Iterá las fases. La investigación no es lineal. Si en Fase 4 descubrís que falta información, volvé a Fase 2 con búsquedas dirigidas.
+
+---
+
+## 1.bis — Mapeo de fases a herramientas de Claude Code
+
+Cuando ejecutás este workflow **dentro de Claude Code**, cada fase tiene una herramienta nativa. No hace falta pegar los prompts de §6 a mano: Claude los ejecuta como parte del flujo. Esta es la traducción 1-a-1:
+
+| Fase | Qué hacés | Herramienta(s) Claude Code | Regla de uso |
+|---|---|---|---|
+| **0 — Plan** | Declarás las fases como tareas | `TodoWrite` | Una sola tarea `in_progress` por vez; se marca `completed` al cerrar cada fase. |
+| **1 — Reconnaissance** | 6–8 búsquedas amplias | `WebSearch` (**en paralelo**) | Lanzá todas las búsquedas en **un solo mensaje** (varios bloques de tool-call juntos) para que corran simultáneas, no en serie. NO escribir archivos todavía. |
+| **2 — Deep dive** | Leer cada URL útil a fondo | `WebFetch` con prompt extractor | Un `WebFetch` por URL, con prompt que pida datos + arquitectura + actores + citas literales. Después `Write` el `sources/NN_*.md`. |
+| **2 — (fan-out opcional)** | Barrer muchas fuentes/archivos a la vez | `Agent` (subagente `Explore` o `general-purpose`) | **Solo si el usuario lo pide explícitamente.** Útil para mapear muchas URLs/archivos en paralelo; el subagente devuelve la conclusión, no el volcado. |
+| **2/3 — Escribir y editar** | Crear/editar fuentes, análisis, research | `Write` (archivo nuevo), `Edit` (cambio puntual), `Read` (antes de editar) | Leé el archivo antes de editarlo. `Write` solo para archivos nuevos o reemplazo total. |
+| **2/3 — Buscar en el repo** | Encontrar texto / archivos | `Grep` (contenido), `Glob` (nombres) | Reemplazan a `grep -r` y `find`. No uses Bash para buscar. |
+| **3 — Synthesis** | Actualizar `research.md` | `Edit` sobre secciones existentes | Sumá ítems sin romper la numeración; `research.md` es síntesis, no copia. |
+| **4 — Critical analysis** | Escribir `analisis/NN_*.md` | `Write` con la plantilla §3 | Verificá el último número usado en `analisis/` con `Glob` antes de numerar. |
+| **5 — Cierre** | README + GLOSARIO + resumen | `Edit` | Marcar el vector como completo en la tabla "Estado actual". |
+| **git** | Commit cuando esté listo | `Bash` (PowerShell o bash) | Solo cuando el usuario lo pide. Branch antes de commitear si estás en `main`. |
+
+### Memoria persistente (Claude Code)
+Claude Code mantiene una **memoria de proyecto** (`~/.claude/.../memory/`) con hechos no derivables del código: quién es el equipo, el alcance del desafío, la estructura del repo. Si descubrís algo estable y reutilizable entre sesiones (un contacto institucional nuevo, una decisión de alcance, una restricción legal confirmada), guardalo ahí — **no** en este WORKFLOW ni en `research.md`, que son para contenido de investigación.
+
+### Regla de oro de paralelismo
+Si dos llamadas no dependen una de la otra (p. ej. 8 búsquedas web, o leer 5 archivos de `sources/`), mandalas **en el mismo mensaje**. Si una depende del resultado de otra (WebFetch de una URL que recién encontraste), van en mensajes separados.
 
 ---
 
@@ -204,6 +231,8 @@ Es el **documento maestro**. Debe poder leerse de corrido y dar contexto sin abr
 
 ## 6. Prompts probados para usar Claude / LLMs
 
+> **En Claude Code** estos prompts son opcionales: el flujo de §1.bis ya los implementa con herramientas nativas (WebSearch en paralelo, WebFetch, Write/Edit). Usalos textualmente cuando trabajés en **otro LLM** (ChatGPT, Gemini, claude.ai web) que no tenga este WORKFLOW como contexto, o cuando quieras forzar un ángulo específico. Los prompts por vector están versionados en `prompts/NN_*.md` (ver `prompts/01_investigar_alertas_glasgow_his.md` como referencia de formato).
+
 ### 6.1 — Reconnaissance (Fase 1)
 
 ```
@@ -286,33 +315,24 @@ Checklist mental:
 
 ---
 
-## 8. Workflow de comandos (terminal / VS Code)
+## 8. Workflow de comandos
 
-### Crear nueva fuente
-```bash
-# El número siguiente lo elegís según el último archivo en sources/
-NEW=sources/19_nombre_corto.md
-# Copiá la plantilla de WORKFLOW.md sección 2
-# Editá en VS Code
-code $NEW
-```
+Dos columnas: lo que hacés **con Claude Code** (herramienta nativa) y el equivalente **manual en terminal** (PowerShell/bash) si trabajás sin Claude.
 
-### Buscar texto en todas las fuentes
-Usá Grep en VS Code (Ctrl+Shift+F) o:
-```bash
-grep -rin "FHIR" sources/ analisis/ research.md
-```
-
-### Ver qué archivos tocaste hoy
-```bash
-ls -lt sources/ | head
-ls -lt analisis/ | head
-```
+| Tarea | Con Claude Code | Manual (terminal) |
+|---|---|---|
+| Saber el próximo número de fuente | `Glob` con patrón `sources/*.md` | `ls -1 sources/` (Bash) · `Get-ChildItem sources` (PS) |
+| Crear nueva fuente | `Write sources/NN_nombre_corto.md` con la plantilla §2 | crear archivo en VS Code y pegar plantilla |
+| Buscar texto en todo el repo | `Grep "FHIR"` (opcional `glob`/`type`) | `grep -rin "FHIR" sources/ analisis/ research.md` · `Select-String -Path .\sources\*,.\analisis\*,research.md -Pattern FHIR` |
+| Editar un archivo existente | `Read` y luego `Edit` (cambio puntual) | editar en VS Code |
+| Ver qué archivos cambiaron | `Bash: git status` | `git status` |
 
 ### Cuando quieras commit (cuando esté listo)
+
+> Con Claude Code: pedíselo y lo hace por el tool `Bash` (crea branch si estás en `main`). Manual:
+
 ```bash
-git init  # solo la primera vez si no es repo aún
-git add README.md WORKFLOW.md research.md GLOSARIO.md sources/ analisis/
+git add README.md WORKFLOW.md research.md GLOSARIO.md sources/ analisis/ prompts/
 git status
 git commit -m "research: <descripción concreta del avance>"
 ```
@@ -323,11 +343,7 @@ git commit -m "research: <descripción concreta del avance>"
 
 Estos son los ángulos del desafío que **todavía no se atacaron a fondo**. Cada uno merece la secuencia completa (búsquedas → fuentes → análisis):
 
-1. **Alertas Glasgow ≤7 desde HIS hospitalario**
-   - ¿Qué HIS argentinos tienen webhooks?
-   - HSI (Provincia BA), SISA, sistemas privados.
-   - FHIR Subscription mechanism.
-   - Pilotos hospitalarios existentes.
+1. ~~**Alertas Glasgow ≤7 desde HIS hospitalario**~~ ✅ **COMPLETADO** → `sources/19-26` + [analisis/05](analisis/05_alertas_glasgow_his_hospitalarios.md). Reencuadrado como "adaptador HIS de detección pre-mortem que alerta al coordinador". Pendiente de verificación in situ: versión FHIR/Subscription de HSI, si el Glasgow está estructurado, frecuencia de registro.
 
 2. **Notificación realtime CUCAI/INCUCAI**
    - Stack actual de notificación (teléfono, mail, WhatsApp).
