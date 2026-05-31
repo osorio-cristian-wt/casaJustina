@@ -62,6 +62,7 @@ El equipo puede atacar **una** dimensión a fondo o **varias** integradas. Estad
 | 🔬 Análisis: capacitación / microlearning | Pendiente | — |
 | 🔬 Análisis: dashboard cumplimiento institucional | Pendiente | — |
 | 📐 Arquitectura técnica de la solución | Esquemática (en `research.md` § 10) | — |
+| 📦 Entrega AFIDEER — Etapa 1 (comprensión del problema) | **Completa** | `entregables/01` |
 | 🎤 Pitch deck para AFIDEER | Pendiente | — |
 | 📝 Notas formales a INCUCAI / RENAPER / Casa Justina | Pendiente | — |
 | 🧑‍💻 Prototipo software | Pendiente | — |
@@ -118,6 +119,9 @@ casaJustina/
 │   ├── 04_modelo_dinamico_viabilidad_cardiaca.md
 │   ├── 05_alertas_glasgow_his_hospitalarios.md          ← etapa 1: adaptador HIS + detección pre-mortem
 │   └── 06_disparo_logistica_muerte_encefalica.md        ← etapa 2: disparar logística + "no desconectar"
+│
+├── entregables/                  ← entregas formales del Desafío AFIDEER
+│   └── 01_entrega_etapa1_comprension_del_problema.md    ← Etapa 1: comprensión del problema
 │
 └── prompts/                      ← prompts versionados para continuar cada vector
     └── 01_investigar_alertas_glasgow_his.md
