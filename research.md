@@ -257,6 +257,25 @@ Análisis cuantitativo completo, calibración, ejemplos encadenados y limitacion
 | 13 | **Capacitación dispersa** | Esfuerzos puntuales | LMS + simuladores VR | Adopción |
 | 14 | **Auditoría reactiva** | Reportes manuales | Observabilidad continua | Cultura |
 
+### Profundización del cuello #1 — Subdetección: el criterio ya existe, falta ejecutarlo
+
+La investigación del vector "Alertas Glasgow ≤7 desde HIS" arrojó un hallazgo que reencuadra este cuello de botella: **el disparador clínico ya está normado en Argentina**. El **Subprograma de Garantía de Calidad del INCUCAI se basa explícitamente en la detección y monitoreo de pacientes neurocríticos con Glasgow ≤7 (PSG<7)** ([sources/19](sources/19_incucai_deteccion_psg7_garantia_calidad.md)), y la Ley 27.447 Art. 14 obliga a los establecimientos a tener servicios que permitan "la correcta **detección**, evaluación y tratamiento del donante" ([sources/26](sources/26_marco_legal_deteccion_premortem.md)). El gap, entonces, **no es de definición sino de ejecución**: hoy ese monitoreo depende de que un humano lea fichas o planillas.
+
+- **Evidencia de impacto:** automatizar la derivación por triggers (ventilación + UCI neurocrítica + Glasgow) desde el EHR aumentó en un estudio los donantes efectivos **+92 %** (referrals +45 %, autorizaciones +73 %) en hospitales piloto de Texas ([sources/21](sources/21_automatizacion_referral_ehr_estudio.md)).
+- **Detección pre-mortem:** el referral ocurre **antes de la muerte** (NHS: Glasgow ≤4 + reflejos ausentes, o decisión de WLST), para que el referente —en Argentina, el **coordinador hospitalario**— evalúe y siga al paciente sin intervenir en su cuidado ([sources/20](sources/20_triggers_clinicos_premortem_nhs_usa.md)).
+- **Matiz técnico clave:** el Glasgow es una **valoración asistencial registrada en el HIS** (lo carga enfermería), **no** un dato que emita el monitor de cabecera → el adaptador debe leer del HIS/HCE vía FHIR, no del monitor ([sources/23](sources/23_monitores_uti_captura_datos.md)).
+
+Análisis crítico completo (3 arquitecturas, costos, legal, plan): [analisis/05_alertas_glasgow_his_hospitalarios.md](analisis/05_alertas_glasgow_his_hospitalarios.md).
+
+### Profundización de la etapa 2 — Disparar la logística al certificarse la muerte encefálica
+
+La detección PSG<7 es la etapa 1 (pre-mortem). La **etapa 2** es el segundo evento crítico: el instante en que se **certifica la muerte encefálica** según el Protocolo Nacional (Res. 716/2019, [sources/27](sources/27_resolucion_716_2019_muerte_encefalica.md)). Ese acto médico —humano, no automatizable— es la **frontera legal y operativa**: a partir de ahí opera la presunción de donación (Ley 27.447 Art. 33, **sin consentimiento familiar para adultos**, [sources/28](sources/28_ley_27447_art33_consentimiento_familiar.md)) y el Art. 39 obliga a iniciar el proceso. Dos cosas deben pasar automáticamente:
+
+- **Avisar a todos (coordinador + CUCAI + logística) en minutos, no horas.** Hoy es manual/telefónico (cuello #3). Evidencia: un CDS automatizado bajó el tiempo de notificación de **30,2 h a 1,7 h** y aumentó donantes, con pocos falsos positivos y mínima interrupción ([sources/31](sources/31_cds_muerte_encefalica_inminente_zier.md)). El benchmark regulatorio de USA (CMS 42 CFR 482.45) exige avisar **≤1 h y antes de retirar soporte vital** ([sources/29](sources/29_required_referral_cms_42cfr48245.md)).
+- **Que el equipo sepa que NO debe desconectar.** Tras la muerte encefálica el objetivo clínico cambia de "tratar la presión intracraneal" a "mantener la perfusión de los órganos"; **hasta el 20 % de los órganos se pierden por mal manejo hemodinámico del donante** ([sources/30](sources/30_manejo_donante_muerte_encefalica_no_desconectar.md)). El aviso debe traer las metas de mantenimiento del donante (DMG), no ser sólo administrativo.
+
+Argentina **no tiene un "required referral" explícito** como USA; la oportunidad es **implementarlo técnicamente** apoyándose en los Art. 14/39 ya vigentes. Análisis completo: [analisis/06_disparo_logistica_muerte_encefalica.md](analisis/06_disparo_logistica_muerte_encefalica.md).
+
 ---
 
 ## 9. Oportunidades tecnológicas (separadas por madurez)
@@ -269,7 +288,8 @@ Análisis cuantitativo completo, calibración, ejemplos encadenados y limitacion
 5. **Drones para última milla** — escalar piloto H+Trace a 7 provincias.
 6. **Sync HIS-HIBA → SINTRA via FHIR** — piloto con un hospital top.
 7. **Dashboards operacionales públicos** — métricas en tiempo real (DPMH, operativos, etc.).
-8. **Alertas Glasgow ≤7** integradas a HIS hospitalarios (alerta a coordinador hospitalario).
+8. **Alertas Glasgow ≤7 desde HIS** → alerta al **coordinador hospitalario** (no al intensivista, para evitar alert fatigue). Detección **pre-mortem** vía FHIR Subscription (`Observation` LOINC 9269-2, filtro valor ≤7) cuando el HIS lo soporta, o polling/HL7 v2 como fallback. Integración 1-a-muchos con **HSI** (open source, +1.800 efectores) la vuelve escalable. Analizado a fondo en [analisis/05](analisis/05_alertas_glasgow_his_hospitalarios.md) — es el vector que reencuadra el cuello #1 como problema de ejecución, con evidencia de **+92 % donantes** ([sources/21](sources/21_automatizacion_referral_ehr_estudio.md)).
+9. **Auto-disparo de logística al certificarse la muerte encefálica** (etapa 2) → al registrarse la certificación (Res. 716/2019) en el HIS, notificación automática al coordinador + CUCAI + equipos (objetivo ≤1 h, como CMS USA), con el mensaje clínico de **mantener al donante (DMG), no desconectar**. Evidencia: notificación de 30,2 h → 1,7 h ([sources/31](sources/31_cds_muerte_encefalica_inminente_zier.md)). Encadena con el ítem 8. Analizado en [analisis/06](analisis/06_disparo_logistica_muerte_encefalica.md).
 
 ### B) Experimentales, 1-3 años
 1. **ML para predicción de aceptación** — predice qué equipo aceptará el órgano → reordena lista para reducir tiempo de oferta.
@@ -370,6 +390,8 @@ La viabilidad cardíaca decae exponencialmente con dependencia térmica desde el
 - El término "Calipso" como ERP aparece en algunos resultados; podría ser el sistema administrativo de INCUCAI, no SINTRA.
 - El número de coordinadores hospitalarios (~130) vs hospitales totales del país sugiere baja densidad operativa.
 - No se encontró documentación pública sobre la próxima generación de SINTRA o planes de modernización.
+- **Vector Glasgow (a verificar antes del piloto):** versión FHIR de HSI (R4/R4B) y si soporta `Subscription`/webhooks o sólo API de lectura; si el Glasgow se guarda como `Observation` **estructurado** o como **texto libre** en la evolución (define si el filtro automático es viable); y la **frecuencia real de registro de Glasgow** en UTIs argentinas (define la latencia de detección). Detalle en [sources/22](sources/22_fhir_subscription_codificacion_glasgow.md), [sources/24](sources/24_hsi_historia_salud_integrada.md), [sources/23](sources/23_monitores_uti_captura_datos.md).
+- **El detalle fino del Subprograma de Garantía de Calidad** (instrumento, frecuencia exigida, reporte) no es público; requiere anexos de la Res. 199/04 o pedido formal al INCUCAI vía Casa Justina.
 
 ---
 
@@ -381,6 +403,11 @@ La viabilidad cardíaca decae exponencialmente con dependencia térmica desde el
 4. **La estructura organizacional argentina (3 niveles: nacional/provincial/hospitalario)** copia bien el modelo español; la diferencia es **densidad de coordinadores + calidad de detección**.
 5. **SINTRA no tiene "competencia" privada** — toda startup que entre debe hacerlo en colaboración, no en oposición.
 6. **Las distancias argentinas (4.000 km) requieren más sofisticación logística que cualquier país europeo** individual.
+7. **El criterio de detección ya está normado; el cuello es de ejecución, no de definición.** Argentina (PSG<7), NHS (Glasgow ≤4 + DBI) y el modelo EHR de USA (Glasgow ≤5 + vent + UCI) coinciden en disparar la búsqueda de donantes por un Glasgow bajo en paciente neurocrítico **antes de la muerte**. Argentina ya lo exige (Ley 27.447 Art. 14 + Subprograma de Calidad), pero lo ejecuta a mano → el aporte tecnológico es automatizar lo que la norma ya pide, no proponer una práctica nueva. Esto **baja el riesgo regulatorio** del proyecto.
+8. **La detección pre-mortem no es invasiva si respeta el desacople ("decoupling"):** la herramienta detecta y avisa al referente de donación; **no** dispara conversación con la familia ni decisiones clínicas. Ese límite es lo que la vuelve legal y clínicamente aceptable.
+9. **El destinatario correcto de la alerta es el coordinador de donación, no el médico de cabecera** — patrón confirmado por la literatura de alert fatigue: alertar al intensivista genera override habitual; al coordinador le llega como su propia lista de trabajo.
+10. **El proceso tiene dos eventos-disparador, no uno:** (a) **Glasgow ≤7 pre-mortem** → vigilar (etapa 1) y (b) **certificación de muerte encefálica** → disparar logística + mantener al donante (etapa 2). La máquina detecta y notifica en ambos; **las decisiones de certificar la muerte y de hablar con la familia siguen siendo humanas**. La muerte encefálica es la **frontera legal** que habilita pasar de "vigilar dentro del hospital" a "lanzar la coordinación externa".
+11. **"No desconectar" es un problema clínico real, no sólo de aviso:** tras la muerte encefálica hasta el **20 % de los órganos se pierden por mal manejo del donante**; el cambio de objetivo (de tratar la presión intracraneal a mantener la perfusión) debe comunicarse activamente al equipo. USA lo fuerza por ley (avisar antes de retirar soporte); Argentina puede implementarlo técnicamente sobre los Art. 14/39 ya vigentes.
 
 ---
 
@@ -418,5 +445,19 @@ Cada fuente está documentada en `sources/`:
 15. [15_iot_organ_tracking_paragonix_unos.md](sources/15_iot_organ_tracking_paragonix_unos.md) — IoT estado del arte
 16. [16_hospital_italiano_hiba_fhir.md](sources/16_hospital_italiano_hiba_fhir.md) — HIBA y FHIR
 17. [17_workflow_quirurgico_paralelo.md](sources/17_workflow_quirurgico_paralelo.md) — Coordinación de equipos
+18. [18_renaper_sid_capabilities.md](sources/18_renaper_sid_capabilities.md) — RENAPER SID (identificación biométrica)
+19. [19_incucai_deteccion_psg7_garantia_calidad.md](sources/19_incucai_deteccion_psg7_garantia_calidad.md) — Detección PSG<7 + Subprograma de Calidad
+20. [20_triggers_clinicos_premortem_nhs_usa.md](sources/20_triggers_clinicos_premortem_nhs_usa.md) — Triggers pre-mortem (NHS + EHR USA)
+21. [21_automatizacion_referral_ehr_estudio.md](sources/21_automatizacion_referral_ehr_estudio.md) — Evidencia: +92 % donantes automatizando referral
+22. [22_fhir_subscription_codificacion_glasgow.md](sources/22_fhir_subscription_codificacion_glasgow.md) — FHIR Subscription + LOINC 9269-2 (mecánica del adaptador)
+23. [23_monitores_uti_captura_datos.md](sources/23_monitores_uti_captura_datos.md) — Monitores UTI y por qué el Glasgow no sale del monitor
+24. [24_hsi_historia_salud_integrada.md](sources/24_hsi_historia_salud_integrada.md) — HSI (HIS público open source, +1.800 efectores)
+25. [25_alert_fatigue_cds_uti.md](sources/25_alert_fatigue_cds_uti.md) — Alert fatigue: diseño de la alerta
+26. [26_marco_legal_deteccion_premortem.md](sources/26_marco_legal_deteccion_premortem.md) — Marco legal pre-mortem (Ley 27.447 / 26.529 / 25.326)
+27. [27_resolucion_716_2019_muerte_encefalica.md](sources/27_resolucion_716_2019_muerte_encefalica.md) — Protocolo de certificación de muerte encefálica (disparador etapa 2)
+28. [28_ley_27447_art33_consentimiento_familiar.md](sources/28_ley_27447_art33_consentimiento_familiar.md) — Art. 33: donante presunto, sin consentimiento familiar (adultos)
+29. [29_required_referral_cms_42cfr48245.md](sources/29_required_referral_cms_42cfr48245.md) — "Required referral" CMS (USA): avisar antes de desconectar
+30. [30_manejo_donante_muerte_encefalica_no_desconectar.md](sources/30_manejo_donante_muerte_encefalica_no_desconectar.md) — Mantenimiento del donante: por qué no desconectar (DMG, −20 % órganos)
+31. [31_cds_muerte_encefalica_inminente_zier.md](sources/31_cds_muerte_encefalica_inminente_zier.md) — Evidencia: notificación 30,2 h → 1,7 h (Zier et al., AJT 2017)
 
 ---

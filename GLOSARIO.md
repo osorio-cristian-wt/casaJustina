@@ -1,7 +1,7 @@
 # Glosario — Logística de trasplantes y tecnología sanitaria
 
 > Glosario de abreviaturas, siglas y términos técnicos usados en la investigación.
-> Última actualización: 2026-05-14
+> Última actualización: 2026-05-31
 
 ---
 
@@ -28,6 +28,7 @@
 | **BCRA** | Banco Central de la República Argentina | Primer organismo en certificar uso de SID. |
 | **BMDW** | Bone Marrow Donors Worldwide | Registro internacional de donantes de médula ósea (ahora parte de WMDA). |
 | **BO** | Boletín Oficial | Publicación oficial argentina. |
+| **BPA** | Best Practice Advisory | Alerta de soporte a la decisión en EHR (Epic); forma típica de notificar un trigger clínico al médico. Riesgo de "alert fatigue". |
 | **BVLOS** | Beyond Visual Line of Sight | Operación de drones más allá de la línea de vista. |
 
 ## C
@@ -36,8 +37,11 @@
 |---|---|---|
 | **CABA** | Ciudad Autónoma de Buenos Aires | Jurisdicción autónoma. |
 | **CDA** | Clinical Document Architecture | Estándar HL7 v3 (predecesor de FHIR en muchos casos). |
+| **CDS / CDSS** | Clinical Decision Support (System) | Soporte a la decisión clínica; las alertas Glasgow son un caso de CDS. Ver "alert fatigue". |
 | **Celsior** | Solución de preservación de órganos | Usada en corazón y pulmones. |
+| **CFR** | Code of Federal Regulations | Regulación federal USA; 42 CFR 482.45 obliga a hospitales a notificar muertes inminentes al OPO. |
 | **CIT** | Cold Ischemia Time | Tiempo de isquemia fría — desde clamping aórtico hasta reperfusión. |
+| **CMS** | Centers for Medicare & Medicaid Services | Agencia federal USA; sus "Conditions of Participation" exigen el *required referral* al OPO. |
 | **COFETRA** | Comisión Federal de Trasplantes | Coordinación interjurisdiccional argentina. |
 | **CPH** | Células Progenitoras Hematopoyéticas | Donación tipo médula ósea. |
 | **CRESI** | Registro de Establecimientos, Servicios e Inscripciones | Sistema argentino de instituciones, equipos y bancos. |
@@ -52,8 +56,10 @@
 | Sigla | Significado | Notas |
 |---|---|---|
 | **DBD** | Donation after Brain Death | Donación tras muerte encefálica. |
+| **DBI** | Devastating Brain Injury | Daño cerebral devastador; en NHS UK dispara el referral pre-mortem (Glasgow ≤4 + reflejos de tronco ausentes). |
 | **DCD** | Donation after Circulatory Death | Donación tras paro cardíaco (asistolia). |
 | **DGPR** | Dirección General de Protección de Datos | A veces referencia a AAIP. |
+| **DMG** | Donor Management Goals | Metas de mantenimiento del donante en muerte encefálica (FC, PAM, diuresis, FEVI, P/F, PVC, temperatura). Buen manejo evita perder hasta ~20 % de los órganos. |
 | **DNI** | Documento Nacional de Identidad | Argentina. |
 | **DNSIS** | Dirección Nacional de Sistemas de Información Sanitaria | Argentina, dependiente del Ministerio de Salud. |
 | **DonorNet** | Sistema online de UNOS para gestión de donantes | Componente de UNet. |
@@ -155,6 +161,7 @@
 | Sigla | Significado | Notas |
 |---|---|---|
 | **Maastricht** | Clasificación de donantes en asistolia | I-IV; conferencia 1995 en Maastricht (NL). |
+| **mCODE** | minimal Common Oncology Data Elements | IG FHIR (oncología) usado en el estudio de automatización de referral de Texas. No hay IG equivalente de trasplante en AR. |
 | **MELD** | Model for End-stage Liver Disease | Score hepático (>12 años). |
 | **MELD-Na** | MELD con corrección por sodio | Variante usada en Argentina. |
 | **MFA** | Multi-Factor Authentication | Autenticación multifactor. |
@@ -194,7 +201,8 @@
 | **PBA** | Provincia de Buenos Aires | Argentina. |
 | **PELD** | Pediatric End-stage Liver Disease | Score hepático pediátrico (<12 años). |
 | **PEN-Test** | Penetration Test | Test de seguridad ofensiva. |
-| **PSG<7** | Puntaje de Glasgow menor a 7 | Trigger para identificación de potencial donante. |
+| **PLADEMA** | Instituto Pladema (UNICEN) | Desarrolla la HSI junto al Ministerio de Salud; su spin-off Lamansys produce HSI (open source). |
+| **PSG<7** | Puntaje de Glasgow menor a 7 | **Criterio oficial del Subprograma de Garantía de Calidad del INCUCAI** para detección y monitoreo de pacientes neurocríticos (potenciales donantes). |
 
 ## R
 
@@ -203,6 +211,7 @@
 | **REFEPS / REFES** | Registros federales de profesionales / establecimientos sanitarios | Argentina. |
 | **RENAPER** | Registro Nacional de las Personas | Organismo argentino de identificación + biometría. |
 | **REST** | Representational State Transfer | Estilo arquitectónico de APIs (base de FHIR). |
+| **rest-hook** | Canal de FHIR Subscription | Webhook HTTP: el servidor FHIR notifica al adaptador cuando aparece un recurso que matchea (p. ej. Glasgow ≤7). |
 | **Res.** | Resolución | Norma del Poder Ejecutivo. |
 | **Reanimación** | Procedimiento cardiopulmonar | Relevante en Maastricht II. |
 
@@ -219,6 +228,7 @@
 | **SISA** | Sistema Integrado de Información Sanitario Argentino | Plataforma del Ministerio de Salud para registros nacionales. |
 | **SLA** | Service Level Agreement | Acuerdo de nivel de servicio. |
 | **SLI/SLO** | Service Level Indicator / Objective | Métricas de confiabilidad. |
+| **SNOD** | Specialist Nurse in Organ Donation | Enfermero/a especialista en donación (NHS UK); recibe el referral y coordina el acercamiento familiar. Equivalente funcional del **coordinador hospitalario** argentino. |
 | **SNOMED CT** | Systematized Nomenclature of Medicine – Clinical Terms | Terminología clínica estándar (edición Argentina disponible). |
 | **SOAP** | Simple Object Access Protocol | Estilo de APIs basado en XML (usado por validación de huella RENAPER). |
 | **SSE** | Server-Sent Events | Push HTTP unidireccional. |
@@ -265,6 +275,7 @@
 | **Waitlist** | Sistema de lista de espera UNOS | Componente de UNet. |
 | **WebRTC** | Web Real-Time Communication | API web para captura de cámara + streaming. |
 | **WIT** | Warm Ischemia Time | Tiempo de isquemia caliente (relevante en asistolia). |
+| **WLST** | Withdrawal of Life-Sustaining Treatment | Retiro del soporte vital; decisión que (en NHS UK) dispara el referral pre-mortem de potencial donante. |
 | **WMDA** | World Marrow Donor Association | Asociación mundial de registros de donantes de médula. |
 | **WORM** | Write Once Read Many | Almacenamiento inmutable. |
 
@@ -285,7 +296,9 @@
 | **Implante** | Cirugía de colocación del órgano en el receptor. |
 | **Match (matching)** | Proceso de búsqueda y ranking de receptores compatibles. |
 | **Match run** | Ejecución del algoritmo (terminología UNOS). |
-| **Muerte encefálica** | Cese irreversible de funciones encefálicas. Equivalente legal a muerte. |
+| **Muerte encefálica** | Cese irreversible de funciones encefálicas. Equivalente legal a muerte (certificación: Res. 716/2019). Frontera entre la etapa 1 (detección pre-mortem) y la etapa 2 (logística). |
+| **Mantenimiento del donante** | Cuidados intensivos para preservar la función de los órganos tras la muerte encefálica ("no desconectar"). Se rige por metas (DMG). |
+| **Required referral** | Obligación (USA, CMS) de notificar al OPO toda muerte inminente/declarada, antes de retirar el soporte vital. Argentina no lo tiene explícito; se apoya en Ley 27.447 Art. 14/39. |
 | **Procuración** | Conjunto de actividades para obtener órganos donados. |
 | **Procurar para Curar** | Guías argentinas de viabilidad de órganos. |
 | **Receptor** | Persona que recibe el órgano. |
@@ -300,5 +313,7 @@
 | Sigla | Propuesto | Significado |
 |---|---|---|
 | **DonorID** | Sistema de identificación rápida | Gateway que conecta SID-RENAPER con SINTRA-INCUCAI. |
+| **DonorTrigger** | Adaptador de detección desde HIS | Servicio que detecta Glasgow ≤7 (PSG<7) en el HIS y alerta al coordinador hospitalario (pre-mortem). Ver [analisis/05](analisis/05_alertas_glasgow_his_hospitalarios.md). |
+| **SubscriptionTopic** | Tema de suscripción FHIR | Evento tipado al que un sistema se suscribe; se propone uno "detección-donante" estandarizado, reutilizable entre HIS. |
 | **MVP** | Minimum Viable Product | Primer producto funcional del piloto. |
 | **POC** | Proof of Concept | Demostración técnica inicial. |
