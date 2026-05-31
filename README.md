@@ -55,8 +55,10 @@ El equipo puede atacar **una** dimensión a fondo o **varias** integradas. Estad
 | 📚 Investigación del ecosistema | **Completa (v1)** | `research.md` + 18 fuentes en `sources/` |
 | 📘 Glosario de siglas | Completo | `GLOSARIO.md` |
 | 🔬 Análisis: RENAPER facial | **Completo (3 docs)** | `analisis/01-03` |
-| 🔬 Análisis: alertas Glasgow ≤7 desde HIS | Pendiente | — |
-| 🔬 Análisis: notificación realtime CUCAI/INCUCAI | Pendiente | — |
+| 🔬 Análisis: viabilidad dinámica del órgano (cinética térmica) | **Completo** | `analisis/04` |
+| 🔬 Análisis: alertas Glasgow ≤7 desde HIS (detección pre-mortem + adaptador) | **Completo** | `analisis/05` + `sources/19-26` |
+| 🔬 Análisis: auto-disparo de logística al certificarse la muerte encefálica (etapa 2 + "no desconectar") | **Completo** | `analisis/06` + `sources/27-31` |
+| 🔬 Análisis: notificación realtime CUCAI/INCUCAI (stack de la cascada) | Pendiente (encadenado a `analisis/06`) | — |
 | 🔬 Análisis: capacitación / microlearning | Pendiente | — |
 | 🔬 Análisis: dashboard cumplimiento institucional | Pendiente | — |
 | 📐 Arquitectura técnica de la solución | Esquemática (en `research.md` § 10) | — |
@@ -94,12 +96,31 @@ casaJustina/
 │   ├── 15_iot_organ_tracking_paragonix_unos.md
 │   ├── 16_hospital_italiano_hiba_fhir.md
 │   ├── 17_workflow_quirurgico_paralelo.md
-│   └── 18_renaper_sid_capabilities.md
+│   ├── 18_renaper_sid_capabilities.md
+│   ├── 19_incucai_deteccion_psg7_garantia_calidad.md   ← detección PSG<7 (criterio normado AR)
+│   ├── 20_triggers_clinicos_premortem_nhs_usa.md        ← triggers pre-mortem (NHS/USA)
+│   ├── 21_automatizacion_referral_ehr_estudio.md        ← evidencia +92 % donantes
+│   ├── 22_fhir_subscription_codificacion_glasgow.md     ← mecánica del adaptador (FHIR)
+│   ├── 23_monitores_uti_captura_datos.md                ← el Glasgow se lee del HIS, no del monitor
+│   ├── 24_hsi_historia_salud_integrada.md               ← HIS público open source (escala 1-a-muchos)
+│   ├── 25_alert_fatigue_cds_uti.md                      ← diseño de la alerta
+│   ├── 26_marco_legal_deteccion_premortem.md            ← legal pre-mortem (27.447 / 26.529 / 25.326)
+│   ├── 27_resolucion_716_2019_muerte_encefalica.md      ← certificación de muerte (disparador etapa 2)
+│   ├── 28_ley_27447_art33_consentimiento_familiar.md    ← donante presunto, sin veto familiar (adultos)
+│   ├── 29_required_referral_cms_42cfr48245.md           ← "avisar antes de desconectar" (CMS USA)
+│   ├── 30_manejo_donante_muerte_encefalica_no_desconectar.md  ← por qué no desconectar (DMG, −20 %)
+│   └── 31_cds_muerte_encefalica_inminente_zier.md       ← evidencia: 30,2 h → 1,7 h
 │
-└── analisis/                     ← análisis críticos / propuestas
-    ├── 01_propuesta_deteccion_facial_renaper.md
-    ├── 02_sid_validacion_pasiva_y_api_dispositivos_firmados.md
-    └── 03_sensor_huella_costo_bom.md
+├── analisis/                     ← análisis críticos / propuestas
+│   ├── 01_propuesta_deteccion_facial_renaper.md
+│   ├── 02_sid_validacion_pasiva_y_api_dispositivos_firmados.md
+│   ├── 03_sensor_huella_costo_bom.md
+│   ├── 04_modelo_dinamico_viabilidad_cardiaca.md
+│   ├── 05_alertas_glasgow_his_hospitalarios.md          ← etapa 1: adaptador HIS + detección pre-mortem
+│   └── 06_disparo_logistica_muerte_encefalica.md        ← etapa 2: disparar logística + "no desconectar"
+│
+└── prompts/                      ← prompts versionados para continuar cada vector
+    └── 01_investigar_alertas_glasgow_his.md
 ```
 
 ### Cómo navegar
@@ -132,9 +153,9 @@ casaJustina/
 - **2 % donación en asistolia** (vs España >40 %).
 
 ### Brechas atacables
-1. **Subdetección hospitalaria de Glasgow ≤7** — el gap más grande.
+1. **Subdetección hospitalaria de Glasgow ≤7** — el gap más grande. El criterio **ya está normado** (INCUCAI PSG<7) pero se ejecuta a mano; automatizarlo desde el HIS dio **+92 % donantes** en evidencia internacional. Analizado en [analisis/05](analisis/05_alertas_glasgow_his_hospitalarios.md).
 2. **Identificación de pacientes NN** — abordado en `analisis/01-03`.
-3. **Notificación manual / por teléfono al CUCAI** — automatizable.
+3. **Notificación manual / por teléfono al CUCAI** — automatizable. Al certificarse la muerte encefálica se puede **auto-disparar** la cascada (coordinador + CUCAI + logística) y avisar al equipo que **no debe desconectar** (mantener al donante). Evidencia: notificación de **30,2 h → 1,7 h**. Analizado en [analisis/06](analisis/06_disparo_logistica_muerte_encefalica.md).
 4. **Coordinación de operativo** sin timeline compartido en tiempo real.
 5. **SINTRA sin APIs** — interoperabilidad limitada con HIS.
 6. **Cultura institucional** y conocimiento desigual de la Ley Justina.
