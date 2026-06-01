@@ -46,7 +46,7 @@ Un piloto técnico viable sería:
 ### Beneficio
 - Coordinador hospitalario deja de cargar manualmente datos repetidos en SINTRA.
 - Tiempo real de detección a alerta CUCAI: minutos en lugar de horas.
-- Trazabilidad bidireccional cumplida (Art. 38 Ley 27.447).
+- Trazabilidad bidireccional cumplida (Art. 57 inc. 1 Ley 27.447).
 
 ## Citas relevantes
 

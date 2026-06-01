@@ -124,12 +124,12 @@
 ## 4. Marco normativo
 
 ### Ley 27.447 — "Ley Justina" (2018)
-- **Donante presunto** (>18 años).
-- **INCUCAI** = autoridad de aplicación.
-- **SINTRA** declarado obligatorio (Art. 50).
-- **Trazabilidad** obligatoria (Art. 38).
-- **6 horas** máximo desde declaración muerte hasta entrega del cuerpo.
-- Cobertura 100% por financiadores (Art. 64).
+> Articulado completo y verificado en [sources/04](sources/04_ley_27447_justina.md) (fuente canónica). Numeración corregida abajo.
+- **Donante presunto**, mayor de 18 años (**Art. 33**).
+- **Deber de detección** del donante en los establecimientos (**Art. 14**) y **deber de iniciar el proceso de donación** al certificar la muerte (**Art. 39 — "Notificación"**).
+- **INCUCAI** = organismo rector (**Art. 56**) con 30 funciones (**Art. 57**), entre ellas **trazabilidad** (inc. 1) y el **sistema nacional de información** (inc. 29, base normativa de SINTRA — la ley no nombra "SINTRA").
+- **Gastos** no a cargo del dador; los cubre el financiador del receptor (**Art. 28**).
+- **COFETRA** dentro del capítulo del INCUCAI (**Art. 57 + Art. 61**).
 
 ### Resoluciones operacionales clave
 - **Res. 716/19** — Protocolo de certificación de muerte.
@@ -269,7 +269,7 @@ Análisis crítico completo (3 arquitecturas, costos, legal, plan): [analisis/05
 
 ### Profundización de la etapa 2 — Disparar la logística al certificarse la muerte encefálica
 
-La detección PSG<7 es la etapa 1 (pre-mortem). La **etapa 2** es el segundo evento crítico: el instante en que se **certifica la muerte encefálica** según el Protocolo Nacional (Res. 716/2019, [sources/27](sources/27_resolucion_716_2019_muerte_encefalica.md)). Ese acto médico —humano, no automatizable— es la **frontera legal y operativa**: a partir de ahí opera la presunción de donación (Ley 27.447 Art. 33, **sin consentimiento familiar para adultos**, [sources/28](sources/28_ley_27447_art33_consentimiento_familiar.md)) y el Art. 39 obliga a iniciar el proceso. Dos cosas deben pasar automáticamente:
+La detección PSG<7 es la etapa 1 (pre-mortem). La **etapa 2** es el segundo evento crítico: el instante en que se **certifica la muerte encefálica** según el Protocolo Nacional (Res. 716/2019, [sources/27](sources/27_resolucion_716_2019_muerte_encefalica.md)). Ese acto médico —humano, no automatizable— es la **frontera legal y operativa**: a partir de ahí opera la presunción de donación (Ley 27.447 Art. 33, **sin consentimiento familiar para adultos**, [sources/04](sources/04_ley_27447_justina.md)) y el Art. 39 ("Notificación") obliga a iniciar el proceso. Dos cosas deben pasar automáticamente:
 
 - **Avisar a todos (coordinador + CUCAI + logística) en minutos, no horas.** Hoy es manual/telefónico (cuello #3). Evidencia: un CDS automatizado bajó el tiempo de notificación de **30,2 h a 1,7 h** y aumentó donantes, con pocos falsos positivos y mínima interrupción ([sources/31](sources/31_cds_muerte_encefalica_inminente_zier.md)). El benchmark regulatorio de USA (CMS 42 CFR 482.45) exige avisar **≤1 h y antes de retirar soporte vital** ([sources/29](sources/29_required_referral_cms_42cfr48245.md)).
 - **Que el equipo sepa que NO debe desconectar.** Tras la muerte encefálica el objetivo clínico cambia de "tratar la presión intracraneal" a "mantener la perfusión de los órganos"; **hasta el 20 % de los órganos se pierden por mal manejo hemodinámico del donante** ([sources/30](sources/30_manejo_donante_muerte_encefalica_no_desconectar.md)). El aviso debe traer las metas de mantenimiento del donante (DMG), no ser sólo administrativo.
@@ -297,7 +297,7 @@ Argentina **no tiene un "required referral" explícito** como USA; la oportunida
 3. **Optimización de routing dinámico** considerando CIT del órgano + tráfico + vuelos disponibles.
 4. **Capacitación VR** — simulación de comunicación con familia (Casa Justina ya explora).
 5. **Telemetría de máquinas de perfusión** integrada al operativo.
-6. **Blockchain/append-only ledger** para trazabilidad inmutable (Art. 38).
+6. **Blockchain/append-only ledger** para trazabilidad inmutable (Art. 57 inc. 1 — función de trazabilidad del INCUCAI).
 7. **UTM (Unmanned Traffic Management)** nacional para drones sanitarios.
 
 ### C) Barreras y bloqueos
@@ -345,7 +345,7 @@ Argentina **no tiene un "required referral" explícito** como USA; la oportunida
 4. **Mobile-first** — coordinadores trabajan desde celular, no escritorio.
 5. **Open data interno** — todos los actores ven el mismo timeline.
 6. **Public-facing limitado** — paciente/familia puede ver estado de su operativo sin comprometer privacidad.
-7. **Auditoría inmutable** — append-only para Art. 38 Ley 27.447.
+7. **Auditoría inmutable** — append-only para la trazabilidad de la Ley 27.447 (Art. 57 inc. 1).
 8. **Federal-friendly** — cada provincia puede tener su instancia con datos federados.
 
 ---
@@ -431,7 +431,7 @@ Cada fuente está documentada en `sources/`:
 1. [01_incucai_argentina_gob.md](sources/01_incucai_argentina_gob.md) — INCUCAI institucional
 2. [02_sintra_modulos_arquitectura.md](sources/02_sintra_modulos_arquitectura.md) — SINTRA técnico
 3. [03_pasos_operativos_trasplante.md](sources/03_pasos_operativos_trasplante.md) — Workflow 10 etapas
-4. [04_ley_27447_justina.md](sources/04_ley_27447_justina.md) — Marco normativo
+4. [04_ley_27447_justina.md](sources/04_ley_27447_justina.md) — **Ley 27.447 completa (fuente canónica del articulado; absorbe la ex-fuente 28)**
 5. [05_tiempos_isquemia.md](sources/05_tiempos_isquemia.md) — CIT por órgano
 6. [06_aerolineas_convenio.md](sources/06_aerolineas_convenio.md) — Transporte aéreo
 7. [07_matching_listas_espera.md](sources/07_matching_listas_espera.md) — Algoritmos asignación
@@ -455,7 +455,6 @@ Cada fuente está documentada en `sources/`:
 25. [25_alert_fatigue_cds_uti.md](sources/25_alert_fatigue_cds_uti.md) — Alert fatigue: diseño de la alerta
 26. [26_marco_legal_deteccion_premortem.md](sources/26_marco_legal_deteccion_premortem.md) — Marco legal pre-mortem (Ley 27.447 / 26.529 / 25.326)
 27. [27_resolucion_716_2019_muerte_encefalica.md](sources/27_resolucion_716_2019_muerte_encefalica.md) — Protocolo de certificación de muerte encefálica (disparador etapa 2)
-28. [28_ley_27447_art33_consentimiento_familiar.md](sources/28_ley_27447_art33_consentimiento_familiar.md) — Art. 33: donante presunto, sin consentimiento familiar (adultos)
 29. [29_required_referral_cms_42cfr48245.md](sources/29_required_referral_cms_42cfr48245.md) — "Required referral" CMS (USA): avisar antes de desconectar
 30. [30_manejo_donante_muerte_encefalica_no_desconectar.md](sources/30_manejo_donante_muerte_encefalica_no_desconectar.md) — Mantenimiento del donante: por qué no desconectar (DMG, −20 % órganos)
 31. [31_cds_muerte_encefalica_inminente_zier.md](sources/31_cds_muerte_encefalica_inminente_zier.md) — Evidencia: notificación 30,2 h → 1,7 h (Zier et al., AJT 2017)

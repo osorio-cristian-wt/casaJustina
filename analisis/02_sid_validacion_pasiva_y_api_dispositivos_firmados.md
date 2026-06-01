@@ -126,7 +126,7 @@ Esta arquitectura es estándar en otros dominios:
 2. **Marco normativo:** Ley 25.326 Art. 5 inc. 2 — habilita uso sin consentimiento individual cuando hay **interés vital sanitario**. Donación de órganos califica.
 3. **Antecedente operativo:** la consulta al registro de voluntad por DNI ya se hace cuando hay donante presunto sin consentimiento explícito previo. Es una operación de **cesión de datos por interés vital**.
 4. **Volumen acotado:** 200-500 operativos/año → **no es masivo** → riesgo de mal uso controlable.
-5. **Trazabilidad:** Art. 38 Ley 27.447 obliga a registro trazable → mecanismo de auditoría coincide con lo que pediría RENAPER.
+5. **Trazabilidad:** la Ley 27.447 obliga a un registro trazable (función del INCUCAI, Art. 57 inc. 1) → mecanismo de auditoría coincide con lo que pediría RENAPER.
 
 **Argumentos en contra:**
 1. **Inercia institucional** — RENAPER puede no priorizar el caso por volumen bajo.
@@ -216,7 +216,7 @@ Paciente con paro cardíaco prolongado → no hay pulso subcutáneo → liveness
 
 **Opciones:**
 
-1. **Override autorizado** (recomendado) — operador médico con matrícula declara que el sujeto está fallecido y solicita identificación bajo Art. 38 Ley 27.447. Cada override queda en audit log. El médico asume responsabilidad legal.
+1. **Override autorizado** (recomendado) — operador médico con matrícula declara que el sujeto está fallecido y solicita identificación en el marco del proceso de donación de la Ley 27.447 (Art. 39). Cada override queda en audit log. El médico asume responsabilidad legal.
 
 2. **Bypass por modalidad especial** — la modalidad "SID Médico de Emergencia" (Track B) **no requiere liveness** porque el contexto (paciente en UTI o morgue, hospital, operador certificado) ya asegura presencia física.
 
@@ -270,7 +270,7 @@ Paciente con paro cardíaco prolongado → no hay pulso subcutáneo → liveness
 2. **El liveness pasivo certificado iBeta L2 es producto de mercado** — no hay que inventar nada, solo integrar.
 3. **El convenio especial "SID Médico de Emergencia" es la jugada de largo plazo** — viable, con precedente (BCRA), pero tarda 12-18 meses.
 4. **La huella es el factor más confiable** en este caso de uso — facial es complemento, no protagonista.
-5. **El override médico** cubre el caso "paciente fallecido sin perfusión" — legalmente sólido bajo Art. 38 Ley 27.447 + matrícula del operador.
+5. **El override médico** cubre el caso "paciente fallecido sin perfusión" — legalmente sólido en el marco del proceso de donación de la Ley 27.447 (Art. 39) + matrícula del operador.
 
 ### Pitch para el desafío
 

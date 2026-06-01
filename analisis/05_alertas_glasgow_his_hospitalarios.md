@@ -32,7 +32,7 @@ La solución detecta el disparador clínico que el propio INCUCAI definió —**
 
 ### Qué NO resuelve (límites explícitos)
 - **No decide ni sugiere conducta clínica** sobre el paciente. Sólo señala "este caso cumple el criterio de detección".
-- **No conversa con la familia** ni dispara el pedido de donación (eso es post-muerte y lo hace el equipo, respetando el **desacople** — [sources/20](../sources/20_triggers_clinicos_premortem_nhs_usa.md)). Nota legal: bajo la Ley Justina **la familia no autoriza la donación de un adulto** (donante presunto, Art. 33); se la informa y se verifica la voluntad, pero no es un consentimiento que condicione el proceso — ver [sources/28](../sources/28_ley_27447_art33_consentimiento_familiar.md) y la etapa 2 en [06_disparo_logistica_muerte_encefalica.md](06_disparo_logistica_muerte_encefalica.md).
+- **No conversa con la familia** ni dispara el pedido de donación (eso es post-muerte y lo hace el equipo, respetando el **desacople** — [sources/20](../sources/20_triggers_clinicos_premortem_nhs_usa.md)). Nota legal: bajo la Ley Justina **la familia no autoriza la donación de un adulto** (donante presunto, Art. 33); se la informa y se verifica la voluntad, pero no es un consentimiento que condicione el proceso — ver [sources/04](../sources/04_ley_27447_justina.md) (Art. 33) y la etapa 2 en [06_disparo_logistica_muerte_encefalica.md](06_disparo_logistica_muerte_encefalica.md).
 - **No identifica pacientes NN** — eso es el otro vector (RENAPER, [analisis/01](01_propuesta_deteccion_facial_renaper.md)).
 - **No reemplaza al coordinador** — lo asiste; le arma la lista de pacientes a vigilar.
 - **No escanea masivamente la UTI** ni hace inferencias con cámara/AI sobre pacientes (sería invasivo). Lee un dato que el personal ya registra.
@@ -119,7 +119,7 @@ Servicio independiente, desacoplado del HIS, con tres responsabilidades: **(1) i
 |---|---|---|---|
 | Exfiltración de datos de salud (sensibles, Ley 25.326) | Media | Alto | Payload `id-only` en la alerta; datos completos sólo vía fetch TLS mutuo; cifrado en reposo; retención mínima. |
 | Webhook/endpoint del adaptador expuesto | Media | Alto | mTLS, firma HMAC del webhook, allowlist de IP del HIS, sin endpoint público. |
-| Acceso indebido del operador a la worklist | Media | Medio | RBAC, secreto profesional, **auditoría inmutable** de cada acceso (alineado a Art. 38 Ley 27.447). |
+| Acceso indebido del operador a la worklist | Media | Medio | RBAC, secreto profesional, **auditoría inmutable** de cada acceso (alineado a la trazabilidad de la Ley 27.447, Art. 57 inc. 1). |
 | Alerta enviada a destinatario equivocado | Baja | Alto | Targeting estricto al coordinador del efector; seudonimización; sin reenvío externo automático. |
 | Manipulación del trigger (suprimir/forzar alertas) | Baja | Alto | Logs append-only, control de cambios de umbral, alertas de integridad. |
 | Caída del adaptador → donantes no detectados | Media | Alto | Servicio redundante; modo polling de respaldo; healthchecks; el proceso manual **sigue vigente** como fallback (no se elimina). |

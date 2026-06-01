@@ -304,7 +304,7 @@
 | **Receptor** | Persona que recibe el órgano. |
 | **Seroteca** | Archivo de muestras serológicas conservadas. |
 | **Tipificación HLA** | Determinación de antígenos HLA del donante/receptor. |
-| **Trazabilidad** | Capacidad de seguir el órgano desde procuración hasta implante (Art. 38 Ley 27.447). |
+| **Trazabilidad** | Capacidad de seguir el órgano desde procuración hasta implante (función del INCUCAI, Art. 57 inc. 1 Ley 27.447). |
 
 ---
 

@@ -62,6 +62,7 @@ El equipo puede atacar **una** dimensión a fondo o **varias** integradas. Estad
 | 🔬 Análisis: capacitación / microlearning | Pendiente | — |
 | 🔬 Análisis: dashboard cumplimiento institucional | Pendiente | — |
 | 📐 Arquitectura técnica de la solución | Esquemática (en `research.md` § 10) | — |
+| 📦 Entrega AFIDEER — Etapa 1 (comprensión del problema) | **Completa** | `entregables/01` |
 | 🎤 Pitch deck para AFIDEER | Pendiente | — |
 | 📝 Notas formales a INCUCAI / RENAPER / Casa Justina | Pendiente | — |
 | 🧑‍💻 Prototipo software | Pendiente | — |
@@ -82,7 +83,7 @@ casaJustina/
 │   ├── 01_incucai_argentina_gob.md
 │   ├── 02_sintra_modulos_arquitectura.md
 │   ├── 03_pasos_operativos_trasplante.md
-│   ├── 04_ley_27447_justina.md
+│   ├── 04_ley_27447_justina.md                       ← Ley 27.447 COMPLETA (fuente canónica del articulado)
 │   ├── 05_tiempos_isquemia.md
 │   ├── 06_aerolineas_convenio.md
 │   ├── 07_matching_listas_espera.md
@@ -106,7 +107,6 @@ casaJustina/
 │   ├── 25_alert_fatigue_cds_uti.md                      ← diseño de la alerta
 │   ├── 26_marco_legal_deteccion_premortem.md            ← legal pre-mortem (27.447 / 26.529 / 25.326)
 │   ├── 27_resolucion_716_2019_muerte_encefalica.md      ← certificación de muerte (disparador etapa 2)
-│   ├── 28_ley_27447_art33_consentimiento_familiar.md    ← donante presunto, sin veto familiar (adultos)
 │   ├── 29_required_referral_cms_42cfr48245.md           ← "avisar antes de desconectar" (CMS USA)
 │   ├── 30_manejo_donante_muerte_encefalica_no_desconectar.md  ← por qué no desconectar (DMG, −20 %)
 │   └── 31_cds_muerte_encefalica_inminente_zier.md       ← evidencia: 30,2 h → 1,7 h
@@ -118,6 +118,9 @@ casaJustina/
 │   ├── 04_modelo_dinamico_viabilidad_cardiaca.md
 │   ├── 05_alertas_glasgow_his_hospitalarios.md          ← etapa 1: adaptador HIS + detección pre-mortem
 │   └── 06_disparo_logistica_muerte_encefalica.md        ← etapa 2: disparar logística + "no desconectar"
+│
+├── entregables/                  ← entregas formales del Desafío AFIDEER
+│   └── 01_entrega_etapa1_comprension_del_problema.md    ← Etapa 1: comprensión del problema
 │
 └── prompts/                      ← prompts versionados para continuar cada vector
     └── 01_investigar_alertas_glasgow_his.md

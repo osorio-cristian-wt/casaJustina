@@ -67,7 +67,7 @@ A nivel global, el tracking de órganos con GPS + IoT (temperatura, humedad, vib
 2. Plataforma de tracking integrada con SINTRA.
 3. APIs para que centros de trasplante reciban telemetría en tiempo real.
 4. Public-facing tracking limitado (estilo "su órgano está a 30 min").
-5. Auditoría inmutable (blockchain o append-only ledger) — útil para Art. 38 trazabilidad de Ley 27.447.
+5. Auditoría inmutable (blockchain o append-only ledger) — útil para la trazabilidad de la Ley 27.447 (Art. 57 inc. 1).
 
 ## Implicancias tecnológicas
 
