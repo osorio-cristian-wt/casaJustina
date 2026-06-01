@@ -19,7 +19,7 @@
 | **Fecha de entrega** | 2026-05-31 |
 | **Premio del desafío** | Participación en el Congreso AFIDE — Panamá, noviembre 2026 |
 
-> El soporte documental completo de esta entrega (30 fuentes citadas y 6 análisis críticos) está versionado en este mismo repositorio. Ver [§7 — Metodología](#7-metodología-de-investigación-del-equipo) y el [índice de fuentes](#índice-de-fuentes-citadas).
+> El soporte documental de esta entrega (30 fuentes citadas y 6 análisis críticos) proviene de un **repositorio público dedicado a esta investigación** ([github.com/osorio-cristian-wt/casaJustina](https://github.com/osorio-cristian-wt/casaJustina)), donde el equipo documentó cada fuente en su propio archivo —con URL original, fecha de consulta, resumen y citas literales— para que todo lo afirmado acá sea trazable. Los enlaces de este documento apuntan a ese repositorio. Ver [§7 — Metodología](#7-metodología-de-investigación-del-equipo) y el [índice de fuentes](#índice-de-fuentes-citadas).
 
 ---
 
@@ -195,7 +195,7 @@ RECONNAISSANCE → DEEP DIVE → SYNTHESIS → CRITICAL ANALYSIS → DECISIONES
 
 ## Índice de fuentes citadas
 
-Selección de las fuentes que sostienen esta entrega (índice completo en [research.md §15](https://github.com/osorio-cristian-wt/casaJustina/blob/main/research.md)):
+Cada enlace de abajo abre el archivo correspondiente en el **repositorio de investigación del equipo** en GitHub ([github.com/osorio-cristian-wt/casaJustina](https://github.com/osorio-cristian-wt/casaJustina)), donde la fuente está documentada con su URL original, fecha de consulta, resumen e implicancias. Esta es una selección de las que sostienen la entrega; el índice completo de fuentes está en [research.md §15](https://github.com/osorio-cristian-wt/casaJustina/blob/main/research.md).
 
 | # | Fuente | Aporte a esta entrega |
 |---|---|---|
