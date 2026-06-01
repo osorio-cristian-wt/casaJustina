@@ -73,6 +73,20 @@ El propio enunciado descompone las **causas raíz** del problema, y nuestra inve
 
 Dos atributos exigidos por el enunciado —**"oportuna"** y **"confiable"**— son medibles: oportuna = baja latencia entre el evento clínico y el aviso; confiable = repetible, auditable e integrada con los sistemas existentes (SINTRA, HIS hospitalarios). Esto nos da, desde el inicio, un criterio cuantitativo para evaluar cualquier solución futura.
 
+### 2.3 El problema se descompone en cinco dimensiones
+
+Para ordenar el análisis, el equipo entiende el desafío como **cinco dimensiones encadenadas** —del paciente en la cama de UTI hasta el cumplimiento institucional—. Esto es un **mapa del problema**, no una propuesta de solución: ayuda a ubicar dónde se pierden oportunidades y qué dimensión ataca cada hallazgo.
+
+| # | Dimensión | Qué falla hoy | Dónde se trata en esta entrega |
+|---|---|---|---|
+| 1 | **Detectar** | El paciente neurocrítico (Glasgow ≤ 7) no se identifica de forma sistemática. | Hallazgos [H‑A](#4-principales-hallazgos-de-investigación)/[H‑B](#4-principales-hallazgos-de-investigación); problema P1 |
+| 2 | **Identificar** | Pacientes NN (sin identidad) en UTI; trabas para vincular su voluntad de donación. | Fuera del foco de esta entrega (línea complementaria del equipo) |
+| 3 | **Notificar** | Aviso manual y tardío (teléfono/WhatsApp) al coordinador / CUCAI / INCUCAI. | Hallazgo H‑C; problema P2 |
+| 4 | **Capacitar** | Desconocimiento de la Ley Justina y de los criterios de detección. | Causa raíz del enunciado (§2.2); problema P5 |
+| 5 | **Cumplir** | Protocolos institucionales desactualizados; sin auditoría de adherencia. | Restricción del enunciado; problemas P3–P4 |
+
+El equipo puede atacar **una** dimensión a fondo o **varias** integradas; la formulación de [§5](#5-formulación-clara-del-problema) prioriza **Detectar** y **Notificar**, que es donde la evidencia muestra el mayor impacto. Mapa completo del espacio del problema en [sources/00](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/00_desafio_casa_justina_enunciado.md).
+
 ---
 
 ## 3. Actores involucrados
@@ -219,4 +233,4 @@ Cada enlace de abajo abre el archivo correspondiente en el **repositorio de inve
 
 ---
 
-> **Nota de cierre.** En línea con la consigna, esta etapa **no presenta una solución desarrollada**. El espacio de soluciones (detectar / identificar / notificar / capacitar / cumplir) está mapeado en [sources/00](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/00_desafio_casa_justina_enunciado.md) y será el punto de partida de la siguiente etapa del Desafío AFIDEER 2026.
+> **Nota de cierre.** En línea con la consigna, esta etapa **no presenta una solución desarrollada**. Las **cinco dimensiones del problema** ([§2.3](#23-el-problema-se-descompone-en-cinco-dimensiones)) son el mapa del espacio a abordar y serán el punto de partida de la siguiente etapa del Desafío AFIDEER 2026.
