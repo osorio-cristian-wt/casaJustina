@@ -1,9 +1,9 @@
-# Entrega — Etapa 1: Comprensión del problema
+# Entrega - Etapa 1: Comprensión del problema
 
-> **Desafío de Innovación Entre Ríos 2026 — AFIDEER**
+> **Desafío de Innovación Entre Ríos 2026 - AFIDEER**
 > **Desafío seleccionado:** *Detección y notificación de potenciales donantes* (propuesto por **Casa Justina**)
 >
-> Esta entrega cubre los seis puntos exigidos por la consigna de la etapa: descripción del desafío, contexto y problemática, actores involucrados, principales hallazgos de investigación, formulación del problema y supuestos/hipótesis del equipo. **No se presenta una solución desarrollada** — el objetivo de esta etapa es demostrar comprensión, análisis y capacidad de investigación.
+> Esta entrega cubre los seis puntos exigidos por la consigna de la etapa: descripción del desafío, contexto y problemática, actores involucrados, principales hallazgos de investigación, formulación del problema y supuestos/hipótesis del equipo. **No se presenta una solución desarrollada** el objetivo de esta etapa es demostrar comprensión, análisis y capacidad de investigación.
 
 ---
 
@@ -14,18 +14,18 @@
 | **Desafío** | Detección y notificación de potenciales donantes |
 | **Sponsor del desafío** | Casa Justina (ONG impulsora de la Ley Justina 27.447) |
 | **Consorcio organizador** | AFIDEER (UNER, UADER, UAP, UCA, UTN) |
-| **Universidad del equipo** | Universidad Adventista del Plata (UAP) — Entre Ríos |
+| **Universidad del equipo** | Universidad Adventista del Plata (UAP) - Entre Ríos |
 | **Equipo / integrantes** | _(completar)_ |
 | **Fecha de entrega** | 2026-05-31 |
-| **Premio del desafío** | Participación en el Congreso AFIDE — Panamá, noviembre 2026 |
+| **Premio del desafío** | Participación en el Congreso AFIDE - Panamá, noviembre 2026 |
 
-> El soporte documental de esta entrega (30 fuentes citadas y 6 análisis críticos) proviene de un **repositorio público dedicado a esta investigación** ([github.com/osorio-cristian-wt/casaJustina](https://github.com/osorio-cristian-wt/casaJustina)), donde el equipo documentó cada fuente en su propio archivo —con URL original, fecha de consulta, resumen y citas literales— para que todo lo afirmado acá sea trazable. Los enlaces de este documento apuntan a ese repositorio. Ver [§7 — Metodología](#7-metodología-de-investigación-del-equipo) y el [índice de fuentes](#índice-de-fuentes-citadas).
+> El soporte documental de esta entrega (30 fuentes citadas y 6 análisis críticos) proviene de un **repositorio público dedicado a esta investigación** ([github.com/osorio-cristian-wt/casaJustina](https://github.com/osorio-cristian-wt/casaJustina)), donde el equipo documentó cada fuente en su propio archivo con URL original, fecha de consulta, resumen y citas literales para que todo lo afirmado acá sea trazable. Los enlaces de este documento apuntan a ese repositorio. Ver [§7 - Metodología](#7-metodología-de-investigación-del-equipo) y el [índice de fuentes](#índice-de-fuentes-citadas).
 
 ---
 
 ## 1. Descripción breve del desafío seleccionado
 
-El sistema argentino de trasplantes depende de que, en las terapias intensivas, se **identifique a tiempo a los potenciales donantes** y se **notifique de forma oportuna y confiable** al sistema de procuración. Hoy ese proceso —aunque la ley lo exige— **no se realiza de manera sistemática ni integrada**, y eso se traduce en pérdida de oportunidades de donación y, en última instancia, en vidas que no se salvan.
+El sistema argentino de trasplantes depende de que, en las terapias intensivas, se **identifique a tiempo a los potenciales donantes** y se **notifique de forma oportuna y confiable** al sistema de procuración. Hoy ese proceso -aunque la ley lo exige- **no se realiza de manera sistemática ni integrada**, y eso se traduce en pérdida de oportunidades de donación y, en última instancia, en vidas que no se salvan.
 
 El desafío propuesto por Casa Justina pregunta:
 
@@ -45,21 +45,21 @@ Argentina trasplanta mucho menos de lo que podría:
 |---|---|---|
 | Donantes por millón de habitantes (DPMH) | **17,7** | 51,9 (2025) |
 | Trasplantes realizados | 4.263 | >6.300 (2025) |
-| Donantes / procesos de donación | 1.972 | — |
-| Personas en lista de espera | ~7.500 (estimado) | — |
-| Mortalidad anual en lista de espera | **25–35 %** (estimación, a confirmar) | — |
+| Donantes / procesos de donación | 1.972 | - |
+| Personas en lista de espera | ~7.500 (estimado) | - |
+| Mortalidad anual en lista de espera | **25–35 %** (estimación, a confirmar) | - |
 | Negativa familiar | **~40 %** | ~12 % |
 | Donación en asistolia | **~2 %** | ~50 % |
 
-> *Los valores de España (DPMH y trasplantes) son de 2025 y los de Argentina de 2024 — años distintos, comparar con cautela. La lista de espera y la mortalidad en lista son estimaciones que conviene confirmar con INCUCAI. Fuentes: [sources/11](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/11_estadisticas_argentina_2024_2025.md), [sources/13](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/13_modelo_espanol_ont.md).*
+> *Los valores de España (DPMH y trasplantes) son de 2025 y los de Argentina de 2024 - años distintos, comparar con cautela. La lista de espera y la mortalidad en lista son estimaciones que conviene confirmar con INCUCAI. Fuentes: [sources/11](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/11_estadisticas_argentina_2024_2025.md), [sources/13](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/13_modelo_espanol_ont.md).*
 
-> **Dimensión de la oportunidad:** si Argentina alcanzara una DPMH de 30 tendría ~3.300 donantes (~7.000 trasplantes); con la DPMH española (~52), ~5.000 donantes (~10.000 trasplantes) — proyección lineal a partir de las cifras 2024. *Fuentes: [sources/11](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/11_estadisticas_argentina_2024_2025.md), [sources/13](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/13_modelo_espanol_ont.md).*
+> **Dimensión de la oportunidad:** si Argentina alcanzara una DPMH de 30 tendría ~3.300 donantes (~7.000 trasplantes); con la DPMH española (~52), ~5.000 donantes (~10.000 trasplantes) - proyección lineal a partir de las cifras 2024. *Fuentes: [sources/11](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/11_estadisticas_argentina_2024_2025.md), [sources/13](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/13_modelo_espanol_ont.md).*
 
-El marco legal es **habilitante, no restrictivo**: la **Ley 27.447 ("Ley Justina", 2018)** establece el donante presunto para mayores de 18 años, designa al INCUCAI como autoridad de aplicación y —en su Art. 14— obliga a los establecimientos a contar con servicios que permitan "la correcta **detección**, evaluación y tratamiento del donante" ([sources/04](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/04_ley_27447_justina.md), [sources/26](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/26_marco_legal_deteccion_premortem.md)). El problema no es que falte la norma, sino que su cumplimiento operativo es desigual.
+El marco legal es **habilitante, no restrictivo**: la **Ley 27.447 ("Ley Justina", 2018)** establece el donante presunto para mayores de 18 años, designa al INCUCAI como autoridad de aplicación y en su Art. 14 obliga a los establecimientos a contar con servicios que permitan "la correcta **detección**, evaluación y tratamiento del donante" ([sources/04](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/04_ley_27447_justina.md), [sources/26](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/26_marco_legal_deteccion_premortem.md)). El problema no es que falte la norma, sino que su cumplimiento operativo es desigual.
 
 ### 2.2 La problemática
 
-> *"La detección y notificación de potenciales donantes en terapias intensivas no se realiza de forma sistemática ni integrada, lo que limita la cantidad de trasplantes posibles y reduce las oportunidades de salvar vidas."* — Enunciado oficial.
+> *"La detección y notificación de potenciales donantes en terapias intensivas no se realiza de forma sistemática ni integrada, lo que limita la cantidad de trasplantes posibles y reduce las oportunidades de salvar vidas."* Enunciado oficial.
 
 El propio enunciado descompone las **causas raíz** del problema, y nuestra investigación las confirma y matiza:
 
@@ -71,21 +71,21 @@ El propio enunciado descompone las **causas raíz** del problema, y nuestra inve
 | Falta de recursos adecuados | Sistemas que **no se hablan entre sí** y notificación manual (teléfono/WhatsApp en cascada). |
 | Prioridades del equipo de terapia intensiva | El objetivo asistencial inmediato desplaza la tarea de detección/notificación. |
 
-Dos atributos exigidos por el enunciado —**"oportuna"** y **"confiable"**— son medibles: oportuna = baja latencia entre el evento clínico y el aviso; confiable = repetible, auditable e integrada con los sistemas existentes (SINTRA, HIS hospitalarios). Esto nos da, desde el inicio, un criterio cuantitativo para evaluar cualquier solución futura.
+Dos atributos exigidos por el enunciado -**"oportuna"** y **"confiable"**- son medibles: oportuna = baja latencia entre el evento clínico y el aviso; confiable = repetible, auditable e integrada con los sistemas existentes (SINTRA, HIS hospitalarios). Esto nos da, desde el inicio, un criterio cuantitativo para evaluar cualquier solución futura.
 
 ### 2.3 El problema se descompone en cinco dimensiones
 
-Para ordenar el análisis, el equipo entiende el desafío como **cinco dimensiones encadenadas** —del paciente en la cama de UTI hasta el cumplimiento institucional—. Esto es un **mapa del problema**, no una propuesta de solución: ayuda a ubicar dónde se pierden oportunidades y qué dimensión ataca cada hallazgo.
+Para ordenar el análisis, el equipo entiende el desafío como **cinco dimensiones encadenadas** del paciente en la cama de UTI hasta el cumplimiento institucional. Esto es un **mapa del problema**, no una propuesta de solución: ayuda a ubicar dónde se pierden oportunidades y qué dimensión ataca cada hallazgo.
 
-| # | Dimensión | Qué falla hoy | Dónde se trata en esta entrega |
+| # | Dimensión | Qué falla hoy | Investigación del equipo que la toca |
 |---|---|---|---|
-| 1 | **Detectar** | El paciente neurocrítico (Glasgow ≤ 7) no se identifica de forma sistemática. | Hallazgos [H‑A](#4-principales-hallazgos-de-investigación)/[H‑B](#4-principales-hallazgos-de-investigación); problema P1 |
-| 2 | **Identificar** | Pacientes NN (sin identidad) en UTI; trabas para vincular su voluntad de donación. | Fuera del foco de esta entrega (línea complementaria del equipo) |
-| 3 | **Notificar** | Aviso manual y tardío (teléfono/WhatsApp) al coordinador / CUCAI / INCUCAI. | Hallazgo H‑C; problema P2 |
-| 4 | **Capacitar** | Desconocimiento de la Ley Justina y de los criterios de detección. | Causa raíz del enunciado (§2.2); problema P5 |
-| 5 | **Cumplir** | Protocolos institucionales desactualizados; sin auditoría de adherencia. | Restricción del enunciado; problemas P3–P4 |
+| 1 | **Detectar** | El paciente neurocrítico (Glasgow ≤ 7) no se identifica de forma sistemática. | Hallazgos H‑A/H‑B; análisis en [analisis/05](https://github.com/osorio-cristian-wt/casaJustina/blob/main/analisis/05_alertas_glasgow_his_hospitalarios.md) |
+| 2 | **Identificar** | Pacientes NN (sin identidad) en UTI; trabas para vincular su voluntad de donación. | Analizado: biometría RENAPER ([analisis/01–03](https://github.com/osorio-cristian-wt/casaJustina/blob/main/analisis/01_propuesta_deteccion_facial_renaper.md)) |
+| 3 | **Notificar** | Aviso manual y tardío (teléfono/WhatsApp) al coordinador / CUCAI / INCUCAI. | Hallazgo H‑C; análisis en [analisis/06](https://github.com/osorio-cristian-wt/casaJustina/blob/main/analisis/06_disparo_logistica_muerte_encefalica.md) |
+| 4 | **Capacitar** | Desconocimiento de la Ley Justina y de los criterios de detección. | Señalada por el enunciado (§2.2); sin análisis dedicado aún |
+| 5 | **Cumplir** | Protocolos institucionales desactualizados; sin auditoría de adherencia. | Señalada por el enunciado; sin análisis dedicado aún |
 
-El equipo puede atacar **una** dimensión a fondo o **varias** integradas; la formulación de [§5](#5-formulación-clara-del-problema) prioriza **Detectar** y **Notificar**, que es donde la evidencia muestra el mayor impacto. Mapa completo del espacio del problema en [sources/00](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/00_desafio_casa_justina_enunciado.md).
+El enunciado admite **atacar una** dimensión a fondo o **varias** integradas. **Esta entrega no decide cuál(es) abordar** —es una etapa de comprensión, no de diseño de la solución—; sólo mapea el espacio del problema y muestra hasta dónde llegó la investigación en cada dimensión. La elección de alcance corresponde a las etapas siguientes del Desafío. Mapa completo del espacio del problema en [sources/00](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/00_desafio_casa_justina_enunciado.md).
 
 ---
 
@@ -111,38 +111,38 @@ El enunciado nombra cinco grupos de actores; la investigación los desagrega en 
 
 Resultado de **30 fuentes documentadas** y **6 análisis críticos**. Se ordenan de lo más estructural a lo más específico.
 
-### H‑A — El criterio de detección **ya está normado**; el cuello es de *ejecución*, no de *definición*
+### H‑A - El criterio de detección **ya está normado**; el cuello es de *ejecución*, no de *definición*
 
 El **Subprograma de Garantía de Calidad del INCUCAI** se basa explícitamente en detectar y monitorear pacientes neurocríticos con **Glasgow ≤ 7 (PSG<7)** ([sources/19](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/19_incucai_deteccion_psg7_garantia_calidad.md)), y la Ley 27.447 Art. 14 obliga a detectar. El gap es que ese monitoreo **hoy se hace a mano**. Esto es decisivo: automatizarlo no inventa una práctica nueva, sino que **ejecuta lo que la norma ya pide** → baja el riesgo regulatorio.
 
-### H‑B — Existe evidencia internacional fuerte de que automatizar la detección funciona
+### H‑B - Existe evidencia internacional fuerte de que automatizar la detección funciona
 
 Automatizar la derivación por *triggers* desde la historia clínica electrónica (ventilación + UCI neurocrítica + Glasgow bajo) aumentó los **donantes efectivos +92 %** (referrals +45 %, autorizaciones +73 %) en hospitales piloto de Texas ([sources/21](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/21_automatizacion_referral_ehr_estudio.md)). Un sistema de soporte a la decisión (CDS) bajó el tiempo de notificación de **30,2 h a 1,7 h** ([sources/31](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/31_cds_muerte_encefalica_inminente_zier.md)).
 
-### H‑C — El proceso tiene **dos eventos-disparador**, no uno
+### H‑C - El proceso tiene **dos eventos-disparador**, no uno
 
 | Etapa | Evento disparador | Qué debe pasar | Quién decide |
 |---|---|---|---|
-| **1 — Detección pre-mortem** | Glasgow ≤ 7 en paciente neurocrítico | **Vigilar**: avisar al coordinador para que siga al paciente | La detección puede automatizarse; certificar la muerte es humano |
-| **2 — Muerte encefálica** | Certificación según Res. 716/2019 | **Disparar logística** (coordinador + CUCAI + equipos) y **mantener al donante (no desconectar)** | Certificación y diálogo con la familia siguen siendo **humanos** |
+| **1 - Detección pre-mortem** | Glasgow ≤ 7 en paciente neurocrítico | **Vigilar**: avisar al coordinador para que siga al paciente | La detección puede automatizarse; certificar la muerte es humano |
+| **2 - Muerte encefálica** | Certificación según Res. 716/2019 | **Disparar logística** (coordinador + CUCAI + equipos) y **mantener al donante (no desconectar)** | Certificación y diálogo con la familia siguen siendo **humanos** |
 
-La muerte encefálica es la **frontera legal**: a partir de ahí opera la presunción de donación (Art. 33, sin veto familiar para adultos — [sources/04](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/04_ley_27447_justina.md)) y el Art. 39 ("Notificación") obliga a iniciar el proceso. Análisis completos: [analisis/05](https://github.com/osorio-cristian-wt/casaJustina/blob/main/analisis/05_alertas_glasgow_his_hospitalarios.md) (etapa 1) y [analisis/06](https://github.com/osorio-cristian-wt/casaJustina/blob/main/analisis/06_disparo_logistica_muerte_encefalica.md) (etapa 2).
+La muerte encefálica es la **frontera legal**: a partir de ahí opera la presunción de donación (Art. 33, sin veto familiar para adultos - [sources/04](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/04_ley_27447_justina.md)) y el Art. 39 ("Notificación") obliga a iniciar el proceso. Análisis completos: [analisis/05](https://github.com/osorio-cristian-wt/casaJustina/blob/main/analisis/05_alertas_glasgow_his_hospitalarios.md) (etapa 1) y [analisis/06](https://github.com/osorio-cristian-wt/casaJustina/blob/main/analisis/06_disparo_logistica_muerte_encefalica.md) (etapa 2).
 
-### H‑D — Detalles técnicos que condicionan cualquier solución
+### H‑D - Detalles técnicos que condicionan cualquier solución
 
 - **El Glasgow se lee del HIS/HCE, no del monitor de cabecera:** es una valoración asistencial que carga enfermería → la integración debe ser vía **FHIR sobre el HIS**, no leyendo el monitor ([sources/23](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/23_monitores_uti_captura_datos.md)).
 - **El destinatario correcto de la alerta es el coordinador de donación, no el intensivista:** alertar al médico de cabecera genera *alert fatigue* y *override* habitual; al coordinador le llega como su propia lista de trabajo ([sources/25](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/25_alert_fatigue_cds_uti.md)).
 - **"No desconectar" es un problema clínico real:** tras la muerte encefálica, hasta el **20 % de los órganos se pierde por mal manejo hemodinámico** del donante; el aviso debe traer las metas de mantenimiento, no ser solo administrativo ([sources/30](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/30_manejo_donante_muerte_encefalica_no_desconectar.md)).
 
-### H‑E — SINTRA es un sistema cerrado, pero la ley no lo impide abrir
+### H‑E - SINTRA es un sistema cerrado, pero la ley no lo impide abrir
 
 **SINTRA** (sistema central del INCUCAI) corre sobre stack de **2003** (Linux + Oracle + J2EE), tiene 6 módulos y **no expone APIs públicas ni soporte FHIR/HL7** ([sources/02](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/02_sintra_modulos_arquitectura.md)). Es el sistema **más cerrado** comparado con UNOS (238 APIs), NHS BT o Eurotransplant ([sources/09](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/09_comparacion_internacional_unos_eurotransplant_nhs.md)). Sin embargo, la normativa **no prohíbe** APIs ni integración FHIR: la Res. MS 680/2018 ya adoptó **FHIR R4 + SNOMED CT** como estándares nacionales de salud digital ([sources/08](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/08_interoperabilidad_fhir_argentina.md)). La estrategia viable es **"complemento, no reemplazo"**.
 
-### H‑F — Hay infraestructura pública que vuelve esto escalable
+### H‑F - Hay infraestructura pública que vuelve esto escalable
 
-El **HSI (Historia de Salud Integrada)** es un HIS público, open source, presente en **+1.800 efectores** ([sources/24](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/24_hsi_historia_salud_integrada.md)). Una integración "1‑a‑muchos" sobre HSI permitiría escalar sin negociar hospital por hospital. **HIBA (Hospital Italiano)** —primer hospital del país en alcanzar **HIMSS EMRAM 7**, con 25+ años en informática en salud y FHIR desde 2014— es el candidato natural a piloto técnico ([sources/16](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/16_hospital_italiano_hiba_fhir.md)).
+El **HSI (Historia de Salud Integrada)** es un HIS público, open source, presente en **+1.800 efectores** ([sources/24](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/24_hsi_historia_salud_integrada.md)). Una integración "1‑a‑muchos" sobre HSI permitiría escalar sin negociar hospital por hospital. **HIBA (Hospital Italiano)** -primer hospital del país en alcanzar **HIMSS EMRAM 7**, con 25+ años en informática en salud y FHIR desde 2014- es el candidato natural a piloto técnico ([sources/16](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/16_hospital_italiano_hiba_fhir.md)).
 
-### H‑G — Existe precedente de innovación público-privada exitosa
+### H‑G - Existe precedente de innovación público-privada exitosa
 
 **Casa Justina + H+Trace** ya operan drones autorizados por ANAC para transporte de órganos, reduciendo la última milla urbana de 1–2,5 h a <30 min y **8× más barato** ([sources/12](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/12_casa_justina_drones_htrace.md)). Demuestra que el ecosistema **acepta innovación** cuando se canaliza por el sponsor adecuado.
 
@@ -214,8 +214,8 @@ Cada enlace de abajo abre el archivo correspondiente en el **repositorio de inve
 | # | Fuente | Aporte a esta entrega |
 |---|---|---|
 | 00 | [Enunciado oficial del desafío](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/00_desafio_casa_justina_enunciado.md) | Desafío, contexto, actores |
-| 02 | [SINTRA — módulos y arquitectura](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/02_sintra_modulos_arquitectura.md) | Hallazgo H‑E (sistema cerrado) |
-| 04 | [Ley 27.447 (Justina) — completa](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/04_ley_27447_justina.md) | Marco legal: donante presunto (Art. 33), detección (Art. 14), notificación (Art. 39) |
+| 02 | [SINTRA - módulos y arquitectura](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/02_sintra_modulos_arquitectura.md) | Hallazgo H‑E (sistema cerrado) |
+| 04 | [Ley 27.447 (Justina) - completa](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/04_ley_27447_justina.md) | Marco legal: donante presunto (Art. 33), detección (Art. 14), notificación (Art. 39) |
 | 09 | [Comparación internacional](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/09_comparacion_internacional_unos_eurotransplant_nhs.md) | Benchmark de apertura de APIs |
 | 11 | [Estadísticas Argentina 2024](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/11_estadisticas_argentina_2024_2025.md) | Datos duros del contexto |
 | 12 | [Casa Justina + drones H+Trace](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/12_casa_justina_drones_htrace.md) | Precedente de innovación |
@@ -223,13 +223,13 @@ Cada enlace de abajo abre el archivo correspondiente en el **repositorio de inve
 | 19 | [Detección PSG<7 + Garantía de Calidad](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/19_incucai_deteccion_psg7_garantia_calidad.md) | Hallazgo H‑A (criterio ya normado) |
 | 21 | [Automatización de referral (EHR)](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/21_automatizacion_referral_ehr_estudio.md) | Evidencia +92 % donantes |
 | 23 | [Monitores UTI / captura de datos](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/23_monitores_uti_captura_datos.md) | El Glasgow se lee del HIS |
-| 24 | [HSI — Historia de Salud Integrada](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/24_hsi_historia_salud_integrada.md) | Escala 1‑a‑muchos |
+| 24 | [HSI - Historia de Salud Integrada](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/24_hsi_historia_salud_integrada.md) | Escala 1‑a‑muchos |
 | 25 | [Alert fatigue en CDS](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/25_alert_fatigue_cds_uti.md) | Destinatario correcto de la alerta |
 | 26 | [Marco legal detección pre-mortem](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/26_marco_legal_deteccion_premortem.md) | Legalidad del desacople |
-| 30 | [Manejo del donante — no desconectar](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/30_manejo_donante_muerte_encefalica_no_desconectar.md) | Hallazgo H‑D (−20 % órganos) |
+| 30 | [Manejo del donante - no desconectar](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/30_manejo_donante_muerte_encefalica_no_desconectar.md) | Hallazgo H‑D (−20 % órganos) |
 | 31 | [CDS muerte encefálica (Zier)](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/31_cds_muerte_encefalica_inminente_zier.md) | Evidencia 30,2 h → 1,7 h |
 
-**Análisis críticos relacionados:** [analisis/05 — Alertas Glasgow desde HIS](https://github.com/osorio-cristian-wt/casaJustina/blob/main/analisis/05_alertas_glasgow_his_hospitalarios.md) · [analisis/06 — Disparo de logística al certificarse la muerte encefálica](https://github.com/osorio-cristian-wt/casaJustina/blob/main/analisis/06_disparo_logistica_muerte_encefalica.md).
+**Análisis críticos relacionados:** [analisis/05 - Alertas Glasgow desde HIS](https://github.com/osorio-cristian-wt/casaJustina/blob/main/analisis/05_alertas_glasgow_his_hospitalarios.md) · [analisis/06 - Disparo de logística al certificarse la muerte encefálica](https://github.com/osorio-cristian-wt/casaJustina/blob/main/analisis/06_disparo_logistica_muerte_encefalica.md).
 
 ---
 
