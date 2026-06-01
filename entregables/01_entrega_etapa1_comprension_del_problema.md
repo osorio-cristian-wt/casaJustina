@@ -152,15 +152,15 @@ El **HSI (Historia de Salud Integrada)** es un HIS público, open source, presen
 
 > **Problema central:** En las terapias intensivas argentinas, la **detección de potenciales donantes** (paciente neurocrítico con Glasgow ≤ 7) y la **notificación al sistema de procuración** (coordinador hospitalario → CUCAI → INCUCAI) ocurren de forma **manual, dependiente de la iniciativa individual y no integrada con los sistemas clínicos**. Esto produce **detecciones tardías o ausentes** y **notificaciones lentas**, que se traducen en **pérdida de potenciales donantes** y, por lo tanto, de trasplantes.
 
-Descompuesto en sub-problemas accionables y medibles:
+Descompuesto en sub-problemas accionables y medibles. La columna **síntoma** localiza cada uno en un cuello de botella concreto del circuito (el mapa completo de los 14 cuellos de todo el pipeline está en [research.md §8](https://github.com/osorio-cristian-wt/casaJustina/blob/main/research.md) / [sources/14](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/14_cuellos_botella_operacionales.md); aquí se acotan a la detección y notificación):
 
-| # | Sub-problema | Atributo del enunciado que viola | Métrica para evaluarlo |
-|---|---|---|---|
-| **P1** | Subdetección: el Glasgow ≤ 7 no se monitorea de forma sistemática | No es **sistemática** | % de pacientes elegibles efectivamente detectados |
-| **P2** | Notificación lenta y manual al certificarse la muerte encefálica | No es **oportuna** | Latencia evento clínico → aviso (objetivo de referencia: ≤ 1 h) |
-| **P3** | Falta de integración entre HIS, SINTRA y los actores | No es **integrada** / **confiable** | Nº de sistemas que se "hablan" vs. recarga manual |
-| **P4** | Mal manejo del donante por desconocimiento ("desconectan") | Reduce el **aprovechamiento** | % de órganos perdidos por manejo hemodinámico |
-| **P5** | Desconocimiento de la Ley Justina y protocolos desactualizados | Causa raíz **cultural** | Adherencia institucional auditada |
+| # | Sub-problema | Síntoma / evidencia (cuello de botella) | Atributo que viola | Métrica |
+|---|---|---|---|---|
+| **P1** | Subdetección: el Glasgow ≤ 7 no se monitorea de forma sistemática | España detecta **3× más** donantes por millón; el monitoreo PSG<7 hoy es **manual** | No es **sistemática** | % de pacientes elegibles efectivamente detectados |
+| **P2** | Notificación lenta y manual al certificarse la muerte encefálica | Aviso por **teléfono/WhatsApp en cascada**; con un CDS la notificación cayó de **30,2 h → 1,7 h** | No es **oportuna** | Latencia evento clínico → aviso (ref. ≤ 1 h) |
+| **P3** | Falta de integración entre HIS, SINTRA y los actores | **SINTRA sin APIs** (stack J2EE/Oracle de 2003): no dialoga con el HIS | No es **integrada** / **confiable** | Nº de sistemas que se "hablan" vs. recarga manual |
+| **P4** | Mal manejo del donante por desconocimiento ("desconectan") | Hasta el **20 %** de los órganos se pierde por inestabilidad hemodinámica del donante | Reduce el **aprovechamiento** | % de órganos perdidos por manejo |
+| **P5** | Desconocimiento de la Ley Justina y protocolos desactualizados | **Negativa familiar 40 %** (vs 12 % España); ~130 coordinadores con capacitación dispersa | Causa raíz **cultural** | Adherencia institucional auditada |
 
 > **Frontera ética y legal del problema (límite autoimpuesto):** la herramienta a diseñar **detecta y avisa al referente de donación**; **no** decide certificar la muerte, **no** dispara la conversación con la familia y **no** interviene en el cuidado del paciente. Ese desacople (*decoupling*) es lo que vuelve la detección pre-mortem **legal y clínicamente aceptable** ([research.md §13, patrón 8](https://github.com/osorio-cristian-wt/casaJustina/blob/main/research.md)).
 
