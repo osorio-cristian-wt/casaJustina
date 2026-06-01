@@ -22,7 +22,7 @@ La Res. 716/2019 aprueba el **"Protocolo Nacional para la Determinación del Ces
 
 ## Relevancia para el sistema de trasplantes
 
-Es **la frontera legal y operativa entre la etapa 1 (detección pre-mortem) y la etapa 2 (logística de procuración)**. Hasta este momento el paciente está vivo y los datos se manejan dentro del hospital ([26](26_marco_legal_deteccion_premortem.md)). **Al firmarse esta certificación**, dos cosas cambian de golpe: (1) opera la presunción de donación de la Ley Justina ([28](28_ley_27447_art33_consentimiento_familiar.md)) y (2) el Art. 39 obliga a iniciar el proceso. Ese es exactamente el evento que el sistema debe detectar para **disparar avisos y logística**.
+Es **la frontera legal y operativa entre la etapa 1 (detección pre-mortem) y la etapa 2 (logística de procuración)**. Hasta este momento el paciente está vivo y los datos se manejan dentro del hospital ([26](26_marco_legal_deteccion_premortem.md)). **Al firmarse esta certificación**, dos cosas cambian de golpe: (1) opera la presunción de donación de la Ley Justina ([04](04_ley_27447_justina.md), Art. 33) y (2) el Art. 39 ("Notificación") obliga a iniciar el proceso. Ese es exactamente el evento que el sistema debe detectar para **disparar avisos y logística**.
 
 ## Implicancias tecnológicas
 

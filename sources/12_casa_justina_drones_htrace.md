@@ -62,7 +62,7 @@ Casa Justina (ONG fundada por Ezequiel Lo Cane, padre de Justina) y H+Trace (sta
 
 ### Oportunidad clara
 - **El proyecto Casa Justina necesita una plataforma tecnológica que orqueste drones + ambulancias + vuelos comerciales + helicópteros en un solo sistema de routing dinámico.**
-- Esa plataforma podría integrarse con SINTRA via APIs y emitir certificados de trazabilidad legales (Ley 27.447 Art. 38).
+- Esa plataforma podría integrarse con SINTRA via APIs y emitir certificados de trazabilidad legales (trazabilidad, Ley 27.447 Art. 57 inc. 1).
 
 ## Citas relevantes
 

@@ -19,7 +19,7 @@
 | **Fecha de entrega** | 2026-05-31 |
 | **Premio del desafío** | Participación en el Congreso AFIDE — Panamá, noviembre 2026 |
 
-> El soporte documental completo de esta entrega (31 fuentes citadas y 6 análisis críticos) está versionado en este mismo repositorio. Ver [§7 — Metodología](#7-metodología-de-investigación-del-equipo) y el [índice de fuentes](#índice-de-fuentes-citadas).
+> El soporte documental completo de esta entrega (30 fuentes citadas y 6 análisis críticos) está versionado en este mismo repositorio. Ver [§7 — Metodología](#7-metodología-de-investigación-del-equipo) y el [índice de fuentes](#índice-de-fuentes-citadas).
 
 ---
 
@@ -95,7 +95,7 @@ El enunciado nombra cinco grupos de actores; la investigación los desagrega en 
 
 ## 4. Principales hallazgos de investigación
 
-Resultado de **31 fuentes documentadas** y **6 análisis críticos**. Se ordenan de lo más estructural a lo más específico.
+Resultado de **30 fuentes documentadas** y **6 análisis críticos**. Se ordenan de lo más estructural a lo más específico.
 
 ### H‑A — El criterio de detección **ya está normado**; el cuello es de *ejecución*, no de *definición*
 
@@ -112,7 +112,7 @@ Automatizar la derivación por *triggers* desde la historia clínica electrónic
 | **1 — Detección pre-mortem** | Glasgow ≤ 7 en paciente neurocrítico | **Vigilar**: avisar al coordinador para que siga al paciente | La detección puede automatizarse; certificar la muerte es humano |
 | **2 — Muerte encefálica** | Certificación según Res. 716/2019 | **Disparar logística** (coordinador + CUCAI + equipos) y **mantener al donante (no desconectar)** | Certificación y diálogo con la familia siguen siendo **humanos** |
 
-La muerte encefálica es la **frontera legal**: a partir de ahí opera la presunción de donación (Art. 33, sin veto familiar para adultos — [sources/28](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/28_ley_27447_art33_consentimiento_familiar.md)) y el Art. 39 obliga a iniciar el proceso. Análisis completos: [analisis/05](https://github.com/osorio-cristian-wt/casaJustina/blob/main/analisis/05_alertas_glasgow_his_hospitalarios.md) (etapa 1) y [analisis/06](https://github.com/osorio-cristian-wt/casaJustina/blob/main/analisis/06_disparo_logistica_muerte_encefalica.md) (etapa 2).
+La muerte encefálica es la **frontera legal**: a partir de ahí opera la presunción de donación (Art. 33, sin veto familiar para adultos — [sources/04](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/04_ley_27447_justina.md)) y el Art. 39 ("Notificación") obliga a iniciar el proceso. Análisis completos: [analisis/05](https://github.com/osorio-cristian-wt/casaJustina/blob/main/analisis/05_alertas_glasgow_his_hospitalarios.md) (etapa 1) y [analisis/06](https://github.com/osorio-cristian-wt/casaJustina/blob/main/analisis/06_disparo_logistica_muerte_encefalica.md) (etapa 2).
 
 ### H‑D — Detalles técnicos que condicionan cualquier solución
 
@@ -188,7 +188,7 @@ RECONNAISSANCE → DEEP DIVE → SYNTHESIS → CRITICAL ANALYSIS → DECISIONES
 ```
 
 - **Principio rector:** *una fuente → un archivo*; toda afirmación de síntesis es trazable a una fuente.
-- **Resultado tangible:** **31 fuentes** documentadas con URL, fecha de consulta y citas literales; **6 análisis críticos** con plan, costos y riesgos; un documento maestro ([research.md](https://github.com/osorio-cristian-wt/casaJustina/blob/main/research.md)) con 16 secciones; y un [glosario de siglas](https://github.com/osorio-cristian-wt/casaJustina/blob/main/GLOSARIO.md).
+- **Resultado tangible:** **30 fuentes** documentadas con URL, fecha de consulta y citas literales; **6 análisis críticos** con plan, costos y riesgos; un documento maestro ([research.md](https://github.com/osorio-cristian-wt/casaJustina/blob/main/research.md)) con 16 secciones; y un [glosario de siglas](https://github.com/osorio-cristian-wt/casaJustina/blob/main/GLOSARIO.md).
 - **Trazabilidad total:** cada hallazgo de esta entrega enlaza a su fuente. Nada se afirma sin respaldo.
 
 ---
@@ -201,7 +201,7 @@ Selección de las fuentes que sostienen esta entrega (índice completo en [resea
 |---|---|---|
 | 00 | [Enunciado oficial del desafío](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/00_desafio_casa_justina_enunciado.md) | Desafío, contexto, actores |
 | 02 | [SINTRA — módulos y arquitectura](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/02_sintra_modulos_arquitectura.md) | Hallazgo H‑E (sistema cerrado) |
-| 04 | [Ley 27.447 (Justina)](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/04_ley_27447_justina.md) | Marco legal habilitante |
+| 04 | [Ley 27.447 (Justina) — completa](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/04_ley_27447_justina.md) | Marco legal: donante presunto (Art. 33), detección (Art. 14), notificación (Art. 39) |
 | 09 | [Comparación internacional](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/09_comparacion_internacional_unos_eurotransplant_nhs.md) | Benchmark de apertura de APIs |
 | 11 | [Estadísticas Argentina 2024](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/11_estadisticas_argentina_2024_2025.md) | Datos duros del contexto |
 | 12 | [Casa Justina + drones H+Trace](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/12_casa_justina_drones_htrace.md) | Precedente de innovación |
@@ -212,7 +212,6 @@ Selección de las fuentes que sostienen esta entrega (índice completo en [resea
 | 24 | [HSI — Historia de Salud Integrada](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/24_hsi_historia_salud_integrada.md) | Escala 1‑a‑muchos |
 | 25 | [Alert fatigue en CDS](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/25_alert_fatigue_cds_uti.md) | Destinatario correcto de la alerta |
 | 26 | [Marco legal detección pre-mortem](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/26_marco_legal_deteccion_premortem.md) | Legalidad del desacople |
-| 28 | [Art. 33 — consentimiento familiar](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/28_ley_27447_art33_consentimiento_familiar.md) | Frontera legal (muerte encefálica) |
 | 30 | [Manejo del donante — no desconectar](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/30_manejo_donante_muerte_encefalica_no_desconectar.md) | Hallazgo H‑D (−20 % órganos) |
 | 31 | [CDS muerte encefálica (Zier)](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/31_cds_muerte_encefalica_inminente_zier.md) | Evidencia 30,2 h → 1,7 h |
 

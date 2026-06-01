@@ -16,7 +16,7 @@ La propuesta **no resuelve "detección de potenciales donantes" en sentido estri
 - Combinar **biometría facial + huella RENAPER** (no solo facial — el paciente está inconsciente, no hay liveness).
 - Convenio formal RENAPER + INCUCAI + hospital piloto.
 - Umbrales de confianza ≥ 99,5 % + segundo factor humano obligatorio.
-- Mecanismo de auditoría inmutable (cumplimiento Art. 38 Ley 27.447).
+- Mecanismo de auditoría inmutable (trazabilidad, Art. 57 inc. 1 Ley 27.447).
 
 **Aporte único del proyecto:** integrar dos sistemas estatales (RENAPER + INCUCAI) que **hoy no se hablan**, lo cual reduce horas/días del workflow para pacientes NN.
 
@@ -114,7 +114,7 @@ No hace falta reconocimiento facial para saber si un paciente con DNI puede ser 
 1. **Cliente hospitalario** — webapp/tablet con captura facial + lector de huella.
 2. **Gateway DonorID** — backend que orquesta SID + SINTRA + auditoría.
 3. **Adaptador SINTRA** — el bloqueo regulatorio mayor; estado actual: **SINTRA no tiene API pública**, hay que negociar acceso institucional con INCUCAI.
-4. **Audit log append-only** — para cumplir Art. 38 Ley 27.447.
+4. **Audit log append-only** — para la trazabilidad de la Ley 27.447 (Art. 57 inc. 1).
 5. **Dashboard de notificación** — push al coordinador hospitalario.
 
 ### Componentes que ya existen
@@ -164,7 +164,7 @@ RENAPER **no publica** tasas False Acceptance Rate (FAR) y False Rejection Rate 
 | **Ley 25.326** — Protección de Datos Personales | Cesión solo por interés legítimo + consentimiento previo (con excepciones de salud pública). |
 | **Art. 11 Ley 25.326** | Finalidad directamente relacionada — la finalidad sanitaria de salvar vidas vía donación encuadra. |
 | **Ley 26.529** — Derechos del Paciente | Identificación inequívoca del paciente como deber del prestador → la propuesta refuerza este deber. |
-| **Ley 27.447** "Ley Justina" | Donante presunto + trazabilidad obligatoria (Art. 38) + confidencialidad de datos del donante/receptor (Art. 47). |
+| **Ley 27.447** "Ley Justina" | Donante presunto (Art. 33) + trazabilidad (Art. 57 inc. 1) + confidencialidad de datos amparada por las Leyes 26.529 y 25.326. |
 | **Ley 27.275** — Acceso a Información Pública | El algoritmo de identificación debe ser auditable. |
 | **Ley 27.706** — Salud Digital | Habilita historia clínica electrónica interoperable. |
 | **Convenio Único SID** | Documento que firma el organismo consumidor con RENAPER. Acceso vía TAD. |

@@ -83,7 +83,7 @@ casaJustina/
 │   ├── 01_incucai_argentina_gob.md
 │   ├── 02_sintra_modulos_arquitectura.md
 │   ├── 03_pasos_operativos_trasplante.md
-│   ├── 04_ley_27447_justina.md
+│   ├── 04_ley_27447_justina.md                       ← Ley 27.447 COMPLETA (fuente canónica del articulado)
 │   ├── 05_tiempos_isquemia.md
 │   ├── 06_aerolineas_convenio.md
 │   ├── 07_matching_listas_espera.md
@@ -107,7 +107,6 @@ casaJustina/
 │   ├── 25_alert_fatigue_cds_uti.md                      ← diseño de la alerta
 │   ├── 26_marco_legal_deteccion_premortem.md            ← legal pre-mortem (27.447 / 26.529 / 25.326)
 │   ├── 27_resolucion_716_2019_muerte_encefalica.md      ← certificación de muerte (disparador etapa 2)
-│   ├── 28_ley_27447_art33_consentimiento_familiar.md    ← donante presunto, sin veto familiar (adultos)
 │   ├── 29_required_referral_cms_42cfr48245.md           ← "avisar antes de desconectar" (CMS USA)
 │   ├── 30_manejo_donante_muerte_encefalica_no_desconectar.md  ← por qué no desconectar (DMG, −20 %)
 │   └── 31_cds_muerte_encefalica_inminente_zier.md       ← evidencia: 30,2 h → 1,7 h

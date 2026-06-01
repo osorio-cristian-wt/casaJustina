@@ -12,7 +12,7 @@
 
 | Pregunta | Veredicto |
 |---|---|
-| ¿Es legal disparar la logística al certificarse la muerte? | **Sí.** Al certificarse la muerte encefálica (Res. 716/2019) opera la **presunción de donación** de la Ley Justina; el Art. 33 establece que **no hace falta consentimiento familiar para adultos** ([sources/28](../sources/28_ley_27447_art33_consentimiento_familiar.md)) y el Art. 39 **obliga a iniciar el proceso**. |
+| ¿Es legal disparar la logística al certificarse la muerte? | **Sí.** Al certificarse la muerte encefálica (Res. 716/2019) opera la **presunción de donación** de la Ley Justina; el Art. 33 establece que **no hace falta consentimiento familiar para adultos** ([sources/04](../sources/04_ley_27447_justina.md)) y el Art. 39 ("Notificación") **obliga a iniciar el proceso**. |
 | ¿"No desconectar" es real? | **Sí, y es crítico.** Tras la muerte encefálica el objetivo cambia a mantener la perfusión de órganos; **hasta el 20 % se pierde por mal manejo del donante** ([sources/30](../sources/30_manejo_donante_muerte_encefalica_no_desconectar.md)). |
 | ¿Hay evidencia de impacto? | **Sí, contundente.** Un CDS automatizado bajó el tiempo de notificación de **30,2 h → 1,7 h** y aumentó donantes, con pocos falsos positivos ([sources/31](../sources/31_cds_muerte_encefalica_inminente_zier.md)). USA lo exige por ley: avisar **≤1 h y antes de retirar soporte vital** ([sources/29](../sources/29_required_referral_cms_42cfr48245.md)). |
 | ¿Qué se puede automatizar y qué no? | **Automatizar:** notificación (coordinador + CUCAI + equipos + transporte), armado del expediente, "modo mantenimiento del donante" y el reloj del operativo. **NO automatizar:** la certificación médica de la muerte y la comunicación con la familia (siguen siendo humanas). |
@@ -29,7 +29,7 @@ La **demora y dispersión de la notificación** cuando ya hay un donante real, y
 
 ### Qué NO resuelve / límites explícitos
 - **No certifica ni sugiere la muerte.** Espera el acto médico reglado (Res. 716/2019, [sources/27](../sources/27_resolucion_716_2019_muerte_encefalica.md)). La máquina **nunca** decide la muerte.
-- **No reemplaza la conversación con la familia** (informar/acompañar/verificar voluntad — [sources/28](../sources/28_ley_27447_art33_consentimiento_familiar.md)). No la automatiza.
+- **No reemplaza la conversación con la familia** (informar/acompañar/verificar voluntad — [sources/04](../sources/04_ley_27447_justina.md), Art. 33). No la automatiza.
 - **No hace el manejo clínico del donante** — lo asiste mostrando metas (DMG) y conectando al coordinador.
 - **No mueve el órgano ni asigna receptores** — eso es SINTRA (etapa 7) y la coordinación logística (otros vectores).
 
@@ -112,7 +112,7 @@ El adaptador de la etapa 1 ya sabe escuchar el HIS y notificar. La etapa 2 agreg
 | Datos identificables del donante al circuito externo | Media | Alto | Post-mortem ya es lícito (presunción); igual cifrar, mTLS, minimizar, auditar. |
 | Cascada no llega (caída/SLA) | Media | Alto | Reintentos, multicanal (push+SMS+voz), escalamiento, **el proceso manual sigue vigente como fallback**. |
 | Orden de desconexión pese a ser donante | Media | **Alto** | Salvaguarda que alerta si hay WLST/extubación tras certificación; mensaje "no desconectar" destacado. |
-| Manipulación del reloj/expediente | Baja | Medio | Ledger append-only (Art. 38 Ley 27.447), control de cambios. |
+| Manipulación del reloj/expediente | Baja | Medio | Ledger append-only (trazabilidad, Art. 57 inc. 1 Ley 27.447), control de cambios. |
 | Sobre-notificación a equipos (fatiga) | Media | Medio | Cascada segmentada por rol; sólo lo accionable a cada actor ([sources/25](../sources/25_alert_fatigue_cds_uti.md)). |
 
 **Principio rector (igual que etapa 1):** el sistema es **aditivo** — acelera y asegura el aviso; nunca bloquea ni sustituye el acto médico ni el proceso manual.
@@ -227,7 +227,7 @@ Software-first, igual que [05](05_alertas_glasgow_his_hospitalarios.md). Costo i
 
 **Fuentes que sustentan este análisis:**
 - [../sources/27_resolucion_716_2019_muerte_encefalica.md](../sources/27_resolucion_716_2019_muerte_encefalica.md) — el evento disparador (certificación)
-- [../sources/28_ley_27447_art33_consentimiento_familiar.md](../sources/28_ley_27447_art33_consentimiento_familiar.md) — base legal (donante presunto, sin veto familiar)
+- [../sources/04_ley_27447_justina.md](../sources/04_ley_27447_justina.md) — base legal (donante presunto Art. 33, notificación Art. 39)
 - [../sources/29_required_referral_cms_42cfr48245.md](../sources/29_required_referral_cms_42cfr48245.md) — benchmark "avisar antes de desconectar" (USA)
 - [../sources/30_manejo_donante_muerte_encefalica_no_desconectar.md](../sources/30_manejo_donante_muerte_encefalica_no_desconectar.md) — por qué no desconectar (DMG, −20 %)
 - [../sources/31_cds_muerte_encefalica_inminente_zier.md](../sources/31_cds_muerte_encefalica_inminente_zier.md) — evidencia (30,2 h → 1,7 h)
