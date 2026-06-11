@@ -9,7 +9,7 @@
 
 ## Resumen
 
-España es **líder mundial** en donación de órganos con **51,9 DPMH** y >6.300 trasplantes en 2025. El "Modelo Español" es recomendado por la OMS y replicado en Latinoamérica. Argentina es 3x menos eficiente (17,7 DPMH).
+España es **líder mundial** en donación de órganos con **51,9 DPMH** y >6.300 trasplantes en 2025. El "Modelo Español" es recomendado por la OMS y replicado en Latinoamérica. Argentina es ~2,9x menos eficiente (18,10 DPMH 2024, dato final SINTRA).
 
 ## Pilares del modelo
 
@@ -54,7 +54,7 @@ Este modelo es **estructuralmente análogo** al argentino:
 
 | Indicador | España | Argentina | Brecha |
 |---|---|---|---|
-| DPMH | 51,9 | 17,7 | 3x |
+| DPMH | 51,9 | 18,10 | ~2,9x |
 | Rechazo familiar | 12% | 40% | 3,3x peor en AR |
 | Donación en asistolia | ~50% | ~2% | 25x menor en AR |
 | Trasplantes/año | 6.300 | 4.263 | 1,5x |
