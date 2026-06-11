@@ -3,7 +3,6 @@
 > **Desafío de Innovación Entre Ríos 2026 - AFIDEER**
 > **Desafío seleccionado:** *Detección y notificación de potenciales donantes* (propuesto por **Casa Justina**)
 >
-> Esta entrega cubre los seis puntos exigidos por la consigna de la etapa: descripción del desafío, contexto y problemática, actores involucrados, principales hallazgos de investigación, formulación del problema y supuestos/hipótesis del equipo. **No se presenta una solución desarrollada** el objetivo de esta etapa es demostrar comprensión, análisis y capacidad de investigación.
 
 ---
 
@@ -14,9 +13,8 @@
 | **Desafío** | Detección y notificación de potenciales donantes |
 | **Sponsor del desafío** | Casa Justina (ONG impulsora de la Ley Justina 27.447) |
 | **Consorcio organizador** | AFIDEER (UNER, UADER, UAP, UCA, UTN) |
-| **Universidad del equipo** | Universidad Adventista del Plata (UAP) - Entre Ríos |
-| **Equipo / integrantes** | _(completar)_ |
-| **Fecha de entrega** | 2026-05-31 |
+| **Equipo / integrantes** | |
+| **Fecha de entrega** | 2026-06-10 |
 | **Premio del desafío** | Participación en el Congreso AFIDE - Panamá, noviembre 2026 |
 
 > El soporte documental de esta entrega (30 fuentes citadas y 6 análisis críticos) proviene de un **repositorio público dedicado a esta investigación** ([github.com/osorio-cristian-wt/casaJustina](https://github.com/osorio-cristian-wt/casaJustina)), donde el equipo documentó cada fuente en su propio archivo con URL original, fecha de consulta, resumen y citas literales para que todo lo afirmado acá sea trazable. Los enlaces de este documento apuntan a ese repositorio. Ver [§7 - Metodología](#7-metodología-de-investigación-del-equipo) y el [índice de fuentes](#índice-de-fuentes-citadas).
@@ -43,7 +41,7 @@ Argentina trasplanta mucho menos de lo que podría:
 
 | Indicador | Argentina (2024) | España (referencia) |
 |---|---|---|
-| Donantes por millón de habitantes (DPMH) | **17,7** | 51,9 (2025) |
+| Donantes por millón de habitantes (DPMH) | **18,10** | 51,9 (2025) |
 | Trasplantes realizados | 4.263 | >6.300 (2025) |
 | Donantes / procesos de donación | 1.972 | - |
 | Personas en lista de espera | ~7.500 (estimado) | - |
@@ -51,7 +49,7 @@ Argentina trasplanta mucho menos de lo que podría:
 | Negativa familiar | **~40 %** | ~12 % |
 | Donación en asistolia | **~2 %** | ~50 % |
 
-> *Los valores de España (DPMH y trasplantes) son de 2025 y los de Argentina de 2024 - años distintos, comparar con cautela. La lista de espera y la mortalidad en lista son estimaciones que conviene confirmar con INCUCAI. Fuentes: [sources/11](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/11_estadisticas_argentina_2024_2025.md), [sources/13](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/13_modelo_espanol_ont.md).*
+> *Los valores de España (DPMH y trasplantes) son de 2025 y los de Argentina de 2024 - años distintos, comparar con cautela. El DPMH 18,10 es el dato final de SINTRA (consultado 2026-06-10); la cifra 17,7 difundida en prensa en enero 2025 era una estimación preliminar correspondiente al año 2023 (17,66 en SINTRA). La lista de espera y la mortalidad en lista son estimaciones que conviene confirmar con INCUCAI. Fuentes: [sources/11](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/11_estadisticas_argentina_2024_2025.md), [sources/13](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/13_modelo_espanol_ont.md), [SINTRA CRESI](https://sintra.incucai.gov.ar/mod_estadisticas/donantes_pmh.php).*
 
 > **Dimensión de la oportunidad:** si Argentina alcanzara una DPMH de 30 tendría ~3.300 donantes (~7.000 trasplantes); con la DPMH española (~52), ~5.000 donantes (~10.000 trasplantes) - proyección lineal a partir de las cifras 2024. *Fuentes: [sources/11](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/11_estadisticas_argentina_2024_2025.md), [sources/13](https://github.com/osorio-cristian-wt/casaJustina/blob/main/sources/13_modelo_espanol_ont.md).*
 

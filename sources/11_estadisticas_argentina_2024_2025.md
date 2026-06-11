@@ -8,14 +8,14 @@
 
 ## Resumen
 
-Argentina realizó **4.263 trasplantes en 2024** desde **1.972 procesos de donación**. La tasa de Donantes por Millón de Habitantes (DPMH) alcanzó 17,7 — récord histórico. En 2025 se superaron estas cifras (récord nuevamente).
+Argentina realizó **4.263 trasplantes en 2024** desde **1.972 procesos de donación**. La tasa de Donantes por Millón de Habitantes (DPMH) alcanzó **18,10** (dato final SINTRA) — récord histórico hasta 2025. En 2025 se superaron estas cifras (DPMH 20,59, récord nuevamente). *Nota: algunas fuentes de prensa (enero 2025) reportaron 17,7, que corresponde al dato de 2023 (17,66 en SINTRA) o a una cifra preliminar; el valor definitivo 2024 en SINTRA es 18,10.*
 
 ## Datos clave 2024
 
 ### Volumen
 - **4.263 trasplantes** de órganos y córneas.
 - **1.972 procesos de donación** (donantes efectivos).
-- **DPMH órganos:** 17,7.
+- **DPMH órganos:** 18,10 (dato final SINTRA; cifra preliminar de prensa: 17,7).
 - **DPMH tejidos:** 24 (récord histórico).
 - **120 trasplantes** solo en enero 2025 desde 56 donantes.
 
@@ -43,7 +43,7 @@ Argentina realizó **4.263 trasplantes en 2024** desde **1.972 procesos de donac
 | **Portugal** | ~30 | ~900 |
 | **EE.UU.** | ~40 | ~46.000 |
 | **Uruguay** | ~17 | ~250 |
-| **Argentina** | **17,7** | **~4.300** |
+| **Argentina** | **18,10** | **~4.300** |
 | **Brasil** | ~18 | ~10.000 |
 | **Chile** | ~10 | ~500 |
 
@@ -71,7 +71,7 @@ Si Argentina alcanzara DPMH 30 (nivel Portugal):
 
 > "En 2024 se realizaron 4.263 trasplantes de órganos en la Argentina, desde 1.972 procesos de donación."
 
-> "La tasa de Donantes de Órganos por Millón de Habitantes (DPMH) a nivel nacional fue de 17,7."
+> "La tasa de Donantes de Órganos por Millón de Habitantes (DPMH) a nivel nacional fue de 17,7." *(cifra de prensa/preliminar; dato final SINTRA 2024: **18,10**. Fuente: https://sintra.incucai.gov.ar/mod_estadisticas/donantes_pmh.php, consultado 2026-06-10)*
 
 ## Observaciones
 
